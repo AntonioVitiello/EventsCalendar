@@ -1,0 +1,566 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_round_border_6"
+    android:padding="20dp">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/monthText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Giugno 2022" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/rightArrowImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/shape_right_arrow_circle" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/leftArrowImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintEnd_toStartOf="@id/rightArrowImage"
+        app:layout_constraintTop_toTopOf="@id/rightArrowImage"
+        app:srcCompat="@drawable/shape_left_arrow_circle" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/sundayText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        android:ems="2"
+        android:gravity="center"
+        android:text="@string/header_sunday"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toStartOf="@id/mondayText"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="@id/monthText"
+        app:layout_constraintTop_toBottomOf="@id/monthText" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/mondayText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:ems="2"
+        android:gravity="center"
+        android:text="@string/header_monday"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toStartOf="@+id/tuesdayText"
+        app:layout_constraintStart_toEndOf="@id/sundayText"
+        app:layout_constraintTop_toTopOf="@id/sundayText" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tuesdayText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:ems="2"
+        android:gravity="center"
+        android:text="@string/header_tuesday"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toStartOf="@+id/wednesdayText"
+        app:layout_constraintStart_toEndOf="@id/mondayText"
+        app:layout_constraintTop_toTopOf="@id/sundayText" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/wednesdayText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:ems="2"
+        android:gravity="center"
+        android:text="@string/header_wednesday"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toStartOf="@+id/thursdayText"
+        app:layout_constraintStart_toEndOf="@id/tuesdayText"
+        app:layout_constraintTop_toTopOf="@id/sundayText" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/thursdayText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:ems="2"
+        android:gravity="center"
+        android:text="@string/header_thursday"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toStartOf="@+id/fridayText"
+        app:layout_constraintStart_toEndOf="@id/wednesdayText"
+        app:layout_constraintTop_toTopOf="@id/sundayText" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/fridayText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:ems="2"
+        android:gravity="center"
+        android:text="@string/header_friday"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toStartOf="@+id/saturdayText"
+        app:layout_constraintStart_toEndOf="@id/thursdayText"
+        app:layout_constraintTop_toTopOf="@id/sundayText" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/saturdayText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="2"
+        android:gravity="center"
+        android:text="@string/header_saturday"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="@id/rightArrowImage"
+        app:layout_constraintStart_toEndOf="@id/fridayText"
+        app:layout_constraintTop_toTopOf="@id/sundayText" />
+
+    <!-- ROW 1 -->
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/row11Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="@id/sundayText"
+        app:layout_constraintStart_toStartOf="@id/sundayText"
+        app:layout_constraintTop_toBottomOf="@id/sundayText"
+        tools:text="1" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/row12Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/header_monday"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBaseline_toBaselineOf="@id/row11Text"
+        app:layout_constraintEnd_toEndOf="@id/mondayText"
+        app:layout_constraintStart_toStartOf="@+id/mondayText"
+        tools:text="2" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/row13Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBaseline_toBaselineOf="@id/row11Text"
+        app:layout_constraintEnd_toEndOf="@id/tuesdayText"
+        app:layout_constraintStart_toStartOf="@+id/tuesdayText"
+        tools:text="3" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/row14Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBaseline_toBaselineOf="@id/row11Text"
+        app:layout_constraintEnd_toEndOf="@id/wednesdayText"
+        app:layout_constraintStart_toStartOf="@+id/wednesdayText"
+        tools:text="4" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/row15Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBaseline_toBaselineOf="@id/row11Text"
+        app:layout_constraintEnd_toEndOf="@id/thursdayText"
+        app:layout_constraintStart_toStartOf="@+id/thursdayText"
+        tools:text="5" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/row16Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBaseline_toBaselineOf="@id/row11Text"
+        app:layout_constraintEnd_toEndOf="@id/fridayText"
+        app:layout_constraintStart_toStartOf="@+id/fridayText"
+        tools:text="6" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/row17Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBaseline_toBaselineOf="@id/row11Text"
+        app:layout_constraintEnd_toEndOf="@id/saturdayText"
+        app:layout_constraintStart_toStartOf="@+id/saturdayText"
+        tools:text="7" />
+
+    <!-- ROW 2 -->
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/row21Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="@id/sundayText"
+        app:layout_constraintStart_toStartOf="@id/sundayText"
+        app:layout_constraintTop_toBottomOf="@id/row11Text"
+        tools:text="21" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/row22Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/header_monday"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBaseline_toBaselineOf="@id/row21Text"
+        app:layout_constraintEnd_toEndOf="@id/mondayText"
+        app:layout_constraintStart_toStartOf="@+id/mondayText"
+        tools:text="22" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/row23Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBaseline_toBaselineOf="@id/row21Text"
+        app:layout_constraintEnd_toEndOf="@id/tuesdayText"
+        app:layout_constraintStart_toStartOf="@+id/tuesdayText"
+        tools:text="23" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/row24Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBaseline_toBaselineOf="@id/row21Text"
+        app:layout_constraintEnd_toEndOf="@id/wednesdayText"
+        app:layout_constraintStart_toStartOf="@+id/wednesdayText"
+        tools:text="24" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/row25Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBaseline_toBaselineOf="@id/row21Text"
+        app:layout_constraintEnd_toEndOf="@id/thursdayText"
+        app:layout_constraintStart_toStartOf="@+id/thursdayText"
+        tools:text="25" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/row26Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBaseline_toBaselineOf="@id/row21Text"
+        app:layout_constraintEnd_toEndOf="@id/fridayText"
+        app:layout_constraintStart_toStartOf="@+id/fridayText"
+        tools:text="26" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/row27Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBaseline_toBaselineOf="@id/row21Text"
+        app:layout_constraintEnd_toEndOf="@id/saturdayText"
+        app:layout_constraintStart_toStartOf="@+id/saturdayText"
+        tools:text="27" />
+
+    <!-- ROW 3 -->
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/row31Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="@id/sundayText"
+        app:layout_constraintStart_toStartOf="@id/sundayText"
+        app:layout_constraintTop_toBottomOf="@id/row21Text"
+        tools:text="31" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/row32Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/header_monday"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBaseline_toBaselineOf="@id/row31Text"
+        app:layout_constraintEnd_toEndOf="@id/mondayText"
+        app:layout_constraintStart_toStartOf="@+id/mondayText"
+        tools:text="32" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/row33Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBaseline_toBaselineOf="@id/row31Text"
+        app:layout_constraintEnd_toEndOf="@id/tuesdayText"
+        app:layout_constraintStart_toStartOf="@+id/tuesdayText"
+        tools:text="33" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/row34Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBaseline_toBaselineOf="@id/row31Text"
+        app:layout_constraintEnd_toEndOf="@id/wednesdayText"
+        app:layout_constraintStart_toStartOf="@+id/wednesdayText"
+        tools:text="34" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/row35Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBaseline_toBaselineOf="@id/row31Text"
+        app:layout_constraintEnd_toEndOf="@id/thursdayText"
+        app:layout_constraintStart_toStartOf="@+id/thursdayText"
+        tools:text="35" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/row36Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBaseline_toBaselineOf="@id/row31Text"
+        app:layout_constraintEnd_toEndOf="@id/fridayText"
+        app:layout_constraintStart_toStartOf="@+id/fridayText"
+        tools:text="36" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/row37Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBaseline_toBaselineOf="@id/row31Text"
+        app:layout_constraintEnd_toEndOf="@id/saturdayText"
+        app:layout_constraintStart_toStartOf="@+id/saturdayText"
+        tools:text="37" />
+
+    <!-- ROW 4 -->
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/row41Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="@id/sundayText"
+        app:layout_constraintStart_toStartOf="@id/sundayText"
+        app:layout_constraintTop_toBottomOf="@id/row31Text"
+        tools:text="41" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/row42Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/header_monday"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBaseline_toBaselineOf="@id/row41Text"
+        app:layout_constraintEnd_toEndOf="@id/mondayText"
+        app:layout_constraintStart_toStartOf="@+id/mondayText"
+        tools:text="42" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/row43Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBaseline_toBaselineOf="@id/row41Text"
+        app:layout_constraintEnd_toEndOf="@id/tuesdayText"
+        app:layout_constraintStart_toStartOf="@+id/tuesdayText"
+        tools:text="43" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/row44Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBaseline_toBaselineOf="@id/row41Text"
+        app:layout_constraintEnd_toEndOf="@id/wednesdayText"
+        app:layout_constraintStart_toStartOf="@+id/wednesdayText"
+        tools:text="44" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/row45Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBaseline_toBaselineOf="@id/row41Text"
+        app:layout_constraintEnd_toEndOf="@id/thursdayText"
+        app:layout_constraintStart_toStartOf="@+id/thursdayText"
+        tools:text="45" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/row46Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBaseline_toBaselineOf="@id/row41Text"
+        app:layout_constraintEnd_toEndOf="@id/fridayText"
+        app:layout_constraintStart_toStartOf="@+id/fridayText"
+        tools:text="46" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/row47Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBaseline_toBaselineOf="@id/row41Text"
+        app:layout_constraintEnd_toEndOf="@id/saturdayText"
+        app:layout_constraintStart_toStartOf="@+id/saturdayText"
+        tools:text="47" />
+
+    <!-- ROW 5 -->
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/row51Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="@id/sundayText"
+        app:layout_constraintStart_toStartOf="@id/sundayText"
+        app:layout_constraintTop_toBottomOf="@id/row41Text"
+        tools:text="51" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/row52Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/header_monday"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBaseline_toBaselineOf="@id/row51Text"
+        app:layout_constraintEnd_toEndOf="@id/mondayText"
+        app:layout_constraintStart_toStartOf="@+id/mondayText"
+        tools:text="52" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/row53Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBaseline_toBaselineOf="@id/row51Text"
+        app:layout_constraintEnd_toEndOf="@id/tuesdayText"
+        app:layout_constraintStart_toStartOf="@+id/tuesdayText"
+        tools:text="53" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/row54Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBaseline_toBaselineOf="@id/row51Text"
+        app:layout_constraintEnd_toEndOf="@id/wednesdayText"
+        app:layout_constraintStart_toStartOf="@+id/wednesdayText"
+        tools:text="54" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/row55Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBaseline_toBaselineOf="@id/row51Text"
+        app:layout_constraintEnd_toEndOf="@id/thursdayText"
+        app:layout_constraintStart_toStartOf="@+id/thursdayText"
+        tools:text="55" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/row56Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBaseline_toBaselineOf="@id/row51Text"
+        app:layout_constraintEnd_toEndOf="@id/fridayText"
+        app:layout_constraintStart_toStartOf="@+id/fridayText"
+        tools:text="56" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/row57Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBaseline_toBaselineOf="@id/row51Text"
+        app:layout_constraintEnd_toEndOf="@id/saturdayText"
+        app:layout_constraintStart_toStartOf="@+id/saturdayText"
+        tools:text="57" />
+
+    <!-- ROW 6 -->
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/row61Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="@id/sundayText"
+        app:layout_constraintStart_toStartOf="@id/sundayText"
+        app:layout_constraintTop_toBottomOf="@id/row51Text"
+        tools:text="61" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/row62Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/header_monday"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBaseline_toBaselineOf="@id/row61Text"
+        app:layout_constraintEnd_toEndOf="@id/mondayText"
+        app:layout_constraintStart_toStartOf="@+id/mondayText"
+        tools:text="62" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/row63Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBaseline_toBaselineOf="@id/row61Text"
+        app:layout_constraintEnd_toEndOf="@id/tuesdayText"
+        app:layout_constraintStart_toStartOf="@+id/tuesdayText"
+        tools:text="63" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/row64Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBaseline_toBaselineOf="@id/row61Text"
+        app:layout_constraintEnd_toEndOf="@id/wednesdayText"
+        app:layout_constraintStart_toStartOf="@+id/wednesdayText"
+        tools:text="64" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/row65Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBaseline_toBaselineOf="@id/row61Text"
+        app:layout_constraintEnd_toEndOf="@id/thursdayText"
+        app:layout_constraintStart_toStartOf="@+id/thursdayText"
+        tools:text="65" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/row66Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBaseline_toBaselineOf="@id/row61Text"
+        app:layout_constraintEnd_toEndOf="@id/fridayText"
+        app:layout_constraintStart_toStartOf="@+id/fridayText"
+        tools:text="66" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/row67Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBaseline_toBaselineOf="@id/row61Text"
+        app:layout_constraintEnd_toEndOf="@id/saturdayText"
+        app:layout_constraintStart_toStartOf="@+id/saturdayText"
+        tools:text="67" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
