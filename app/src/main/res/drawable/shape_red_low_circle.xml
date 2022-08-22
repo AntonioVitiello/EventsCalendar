@@ -5,7 +5,19 @@
             <gradient
                 android:type="linear"
                 android:angle="90"
-                android:startColor="#C27E403C"
+                android:startColor="#80000000"
+                android:endColor="#80FFFFFF" />
+            <size
+                android:width="38dp"
+                android:height="38dp" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="oval">
+            <gradient
+                android:type="linear"
+                android:angle="90"
+                android:startColor="#C2DF5F55"
                 android:endColor="#C2F88C83" />
             <size
                 android:width="38dp"
