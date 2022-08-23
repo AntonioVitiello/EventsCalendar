@@ -6,20 +6,17 @@
     android:background="#292929">
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/leftArrowImage"
+        android:id="@+id/circleImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:src="@drawable/shape_red_high_circle" />
-    <!--        tools:src="@drawable/shape_red_medium_circle" />-->
-    <!--        tools:src="@drawable/shape_red_low_circle" />-->
-    <!--        tools:src="@drawable/shape_red_empty_circle" />-->
+        tools:src="@drawable/shape_light_red_circle" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/dateText"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:textColor="#FFFFFF"
+        android:textColor="@drawable/selector_day_color"
         tools:text="1" />
 
 </FrameLayout>

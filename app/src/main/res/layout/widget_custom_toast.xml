@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:alpha="0.0"
-    android:background="@drawable/shape_recxt_round_15_cyan"
     tools:alpha=".8">
 
     <androidx.appcompat.widget.AppCompatImageView
@@ -16,12 +15,10 @@
         android:layout_marginStart="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_superman" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/messageText"
-        style="@style/primary_dark_bold_caps_16"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ellipsize="end"
