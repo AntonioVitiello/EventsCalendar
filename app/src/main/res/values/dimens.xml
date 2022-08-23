@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="day_event_calendar_size">38dp</dimen>
+</resources>

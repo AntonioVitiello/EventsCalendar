@@ -8,8 +8,8 @@
                 android:startColor="#80000000"
                 android:endColor="#80FFFFFF" />
             <size
-                android:width="38dp"
-                android:height="38dp" />
+                android:width="@dimen/day_event_calendar_size"
+                android:height="@dimen/day_event_calendar_size" />
         </shape>
     </item>
     <item>
@@ -20,8 +20,8 @@
                 android:startColor="#C2DF5F55"
                 android:endColor="#C2F88C83" />
             <size
-                android:width="38dp"
-                android:height="38dp" />
+                android:width="@dimen/day_event_calendar_size"
+                android:height="@dimen/day_event_calendar_size" />
         </shape>
     </item>
 </layer-list>

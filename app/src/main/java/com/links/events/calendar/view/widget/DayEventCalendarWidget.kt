@@ -5,6 +5,7 @@ import android.util.AttributeSet
 import android.view.View
 import android.widget.FrameLayout
 import androidx.core.content.ContextCompat
+import androidx.core.widget.TextViewCompat
 import com.links.events.calendar.R
 import kotlinx.android.synthetic.main.widget_day_event_calendar.view.*
 
@@ -19,38 +20,38 @@ class DayEventCalendarWidget : FrameLayout {
         View.inflate(context, R.layout.widget_day_event_calendar, this)
     }
 
-    fun setText(text: String) {
+    fun setDate(text: String? = null, type: DateType = DateType.NOT_IN_MONTH) {
         dateText.text = text
-    }
-
-    fun setActiveDate(activated: Boolean) {
-        isActivated = activated
-        if (!activated) {
+        if (text.isNullOrEmpty()) {
             showCircle(CircleType.NONE)
+        } else {
+            val styleRes = when (type) {
+                DateType.CURRENT_WITH_EVENT -> {
+                    showCircle(CircleType.LIGHT_RED)
+                    R.style.white_bold_14
+                }
+                DateType.CURRENT_WITHOUT_EVENT -> {
+                    showCircle(CircleType.EMPTY_CIRCLE)
+                    R.style.white_bold_14
+                }
+                DateType.WITH_EVENT -> {
+                    showCircle(CircleType.MEDIUM_RED)
+                    R.style.white_bold_14
+                }
+                DateType.WITHOUT_EVENT -> {
+                    showCircle(CircleType.NONE)
+                    R.style.white_bold_14
+                }
+                DateType.NOT_IN_MONTH -> {
+                    showCircle(CircleType.NONE)
+                    R.style.gray_medium_14
+                }
+            }
+            TextViewCompat.setTextAppearance(dateText, styleRes)
         }
     }
 
-    fun showDarkCircle() {
-        showCircle(CircleType.DARK_RED)
-    }
-
-    fun showMediumCircle() {
-        showCircle(CircleType.MEDIUM_RED)
-    }
-
-    fun showLightCircle() {
-        showCircle(CircleType.LIGHT_RED)
-    }
-
-    fun showEmptyCircle() {
-        showCircle(CircleType.EMPTY_CIRCLE)
-    }
-
-    fun hideCircle() {
-        showCircle(CircleType.NONE)
-    }
-
-    fun showCircle(type: CircleType) {
+    fun showCircle(type: CircleType = CircleType.NONE) {
         val drawable = when (type) {
             CircleType.DARK_RED -> {
                 ContextCompat.getDrawable(context, R.drawable.shape_dark_red_circle)
@@ -73,5 +74,6 @@ class DayEventCalendarWidget : FrameLayout {
 
 
     enum class CircleType { DARK_RED, MEDIUM_RED, LIGHT_RED, EMPTY_CIRCLE, NONE }
+    enum class DateType { WITH_EVENT, WITHOUT_EVENT, CURRENT_WITH_EVENT, CURRENT_WITHOUT_EVENT, NOT_IN_MONTH }
 
 }
