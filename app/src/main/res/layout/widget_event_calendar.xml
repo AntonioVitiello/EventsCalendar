@@ -9,9 +9,9 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/monthText"
+        style="@style/white_medium_16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Giugno 2022" />
@@ -35,6 +35,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/sundayText"
+        style="@style/gray_medium_12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -42,7 +43,6 @@
         android:ems="2"
         android:gravity="center"
         android:text="@string/header_sunday"
-        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toStartOf="@id/mondayText"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintStart_toStartOf="@id/monthText"
@@ -50,77 +50,77 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/mondayText"
+        style="@style/gray_medium_12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:ems="2"
         android:gravity="center"
         android:text="@string/header_monday"
-        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toStartOf="@+id/tuesdayText"
         app:layout_constraintStart_toEndOf="@id/sundayText"
         app:layout_constraintTop_toTopOf="@id/sundayText" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tuesdayText"
+        style="@style/gray_medium_12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:ems="2"
         android:gravity="center"
         android:text="@string/header_tuesday"
-        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toStartOf="@+id/wednesdayText"
         app:layout_constraintStart_toEndOf="@id/mondayText"
         app:layout_constraintTop_toTopOf="@id/sundayText" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/wednesdayText"
+        style="@style/gray_medium_12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:ems="2"
         android:gravity="center"
         android:text="@string/header_wednesday"
-        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toStartOf="@+id/thursdayText"
         app:layout_constraintStart_toEndOf="@id/tuesdayText"
         app:layout_constraintTop_toTopOf="@id/sundayText" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/thursdayText"
+        style="@style/gray_medium_12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:ems="2"
         android:gravity="center"
         android:text="@string/header_thursday"
-        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toStartOf="@+id/fridayText"
         app:layout_constraintStart_toEndOf="@id/wednesdayText"
         app:layout_constraintTop_toTopOf="@id/sundayText" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/fridayText"
+        style="@style/gray_medium_12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:ems="2"
         android:gravity="center"
         android:text="@string/header_friday"
-        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toStartOf="@+id/saturdayText"
         app:layout_constraintStart_toEndOf="@id/thursdayText"
         app:layout_constraintTop_toTopOf="@id/sundayText" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/saturdayText"
+        style="@style/gray_medium_12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="2"
         android:gravity="center"
         android:text="@string/header_saturday"
-        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="@id/rightArrowImage"
         app:layout_constraintStart_toEndOf="@id/fridayText"
         app:layout_constraintTop_toTopOf="@id/sundayText" />
