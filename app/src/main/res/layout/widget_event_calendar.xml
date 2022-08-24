@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/shape_round_border_6"
-    android:paddingHorizontal="19dp">
+    android:paddingHorizontal="19dp"
+    android:paddingBottom="21dp">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/monthText"
@@ -18,48 +19,37 @@
         tools:text="Giugno 2022" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/rightArrowImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/shape_right_arrow_circle" />
-
-    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/leftArrowImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="12dp"
         app:layout_constraintEnd_toStartOf="@id/rightArrowImage"
         app:layout_constraintTop_toTopOf="@id/rightArrowImage"
-        app:srcCompat="@drawable/shape_left_arrow_circle" />
+        app:srcCompat="@drawable/ic_arrow_left_circle" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/sundayText"
-        style="@style/gray_medium_12"
-        android:layout_width="@dimen/day_event_calendar_size"
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/rightArrowImage"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="2dp"
-        android:gravity="center"
-        android:text="@string/header_sunday"
-        app:layout_constraintEnd_toStartOf="@id/mondayText"
-        app:layout_constraintHorizontal_chainStyle="spread_inside"
-        app:layout_constraintStart_toStartOf="@id/monthText"
-        app:layout_constraintTop_toBottomOf="@id/monthText" />
+        android:layout_marginTop="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_arrow_right_circle" />
 
+    <!-- HEADER DAYS -->
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/mondayText"
         style="@style/gray_medium_12"
         android:layout_width="@dimen/day_event_calendar_size"
         android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
         android:layout_marginEnd="2dp"
         android:gravity="center"
         android:text="@string/header_monday"
         app:layout_constraintEnd_toStartOf="@id/tuesdayText"
-        app:layout_constraintStart_toEndOf="@id/sundayText"
-        app:layout_constraintTop_toTopOf="@id/sundayText" />
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="@id/monthText"
+        app:layout_constraintTop_toBottomOf="@id/monthText" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tuesdayText"
@@ -71,7 +61,7 @@
         android:text="@string/header_tuesday"
         app:layout_constraintEnd_toStartOf="@id/wednesdayText"
         app:layout_constraintStart_toEndOf="@id/mondayText"
-        app:layout_constraintTop_toTopOf="@id/sundayText" />
+        app:layout_constraintTop_toTopOf="@id/mondayText" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/wednesdayText"
@@ -83,7 +73,7 @@
         android:text="@string/header_wednesday"
         app:layout_constraintEnd_toStartOf="@id/thursdayText"
         app:layout_constraintStart_toEndOf="@id/tuesdayText"
-        app:layout_constraintTop_toTopOf="@id/sundayText" />
+        app:layout_constraintTop_toTopOf="@id/mondayText" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/thursdayText"
@@ -95,7 +85,7 @@
         android:text="@string/header_thursday"
         app:layout_constraintEnd_toStartOf="@id/fridayText"
         app:layout_constraintStart_toEndOf="@id/wednesdayText"
-        app:layout_constraintTop_toTopOf="@id/sundayText" />
+        app:layout_constraintTop_toTopOf="@id/mondayText" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/fridayText"
@@ -107,455 +97,467 @@
         android:text="@string/header_friday"
         app:layout_constraintEnd_toStartOf="@id/saturdayText"
         app:layout_constraintStart_toEndOf="@id/thursdayText"
-        app:layout_constraintTop_toTopOf="@id/sundayText" />
+        app:layout_constraintTop_toTopOf="@id/mondayText" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/saturdayText"
         style="@style/gray_medium_12"
         android:layout_width="@dimen/day_event_calendar_size"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="2dp"
         android:gravity="center"
         android:text="@string/header_saturday"
-        app:layout_constraintEnd_toEndOf="@id/rightArrowImage"
+        app:layout_constraintEnd_toStartOf="@id/sundayText"
         app:layout_constraintStart_toEndOf="@id/fridayText"
-        app:layout_constraintTop_toTopOf="@id/sundayText" />
+        app:layout_constraintTop_toTopOf="@id/mondayText" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/sundayText"
+        style="@style/gray_medium_12"
+        android:layout_width="@dimen/day_event_calendar_size"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/header_sunday"
+        app:layout_constraintEnd_toEndOf="@id/rightArrowImage"
+        app:layout_constraintStart_toEndOf="@id/saturdayText"
+        app:layout_constraintTop_toTopOf="@id/mondayText" />
 
     <!-- ROW 1 -->
     <com.links.events.calendar.view.widget.DayEventCalendarWidget
-        android:id="@+id/row11Text"
+        android:id="@+id/day11Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="@id/sundayText"
-        app:layout_constraintStart_toStartOf="@id/sundayText"
-        app:layout_constraintTop_toBottomOf="@id/sundayText"
+        app:layout_constraintEnd_toEndOf="@id/mondayText"
+        app:layout_constraintStart_toStartOf="@id/mondayText"
+        app:layout_constraintTop_toBottomOf="@id/mondayText"
         tools:text="1" />
 
     <com.links.events.calendar.view.widget.DayEventCalendarWidget
-        android:id="@+id/row12Text"
+        android:id="@+id/day12Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/header_monday"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@id/row11Text"
-        app:layout_constraintEnd_toEndOf="@id/mondayText"
-        app:layout_constraintStart_toStartOf="@id/mondayText"
+        app:layout_constraintBottom_toBottomOf="@id/day11Widget"
+        app:layout_constraintEnd_toEndOf="@id/tuesdayText"
+        app:layout_constraintStart_toStartOf="@id/tuesdayText"
         tools:text="2" />
 
     <com.links.events.calendar.view.widget.DayEventCalendarWidget
-        android:id="@+id/row13Text"
+        android:id="@+id/day13Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@id/row11Text"
-        app:layout_constraintEnd_toEndOf="@id/tuesdayText"
-        app:layout_constraintStart_toStartOf="@id/tuesdayText"
+        app:layout_constraintBottom_toBottomOf="@id/day11Widget"
+        app:layout_constraintEnd_toEndOf="@id/wednesdayText"
+        app:layout_constraintStart_toStartOf="@id/wednesdayText"
         tools:text="3" />
 
     <com.links.events.calendar.view.widget.DayEventCalendarWidget
-        android:id="@+id/row14Text"
+        android:id="@+id/day14Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@id/row11Text"
-        app:layout_constraintEnd_toEndOf="@id/wednesdayText"
-        app:layout_constraintStart_toStartOf="@id/wednesdayText"
+        app:layout_constraintBottom_toBottomOf="@id/day11Widget"
+        app:layout_constraintEnd_toEndOf="@id/thursdayText"
+        app:layout_constraintStart_toStartOf="@id/thursdayText"
         tools:text="4" />
 
     <com.links.events.calendar.view.widget.DayEventCalendarWidget
-        android:id="@+id/row15Text"
+        android:id="@+id/day15Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@id/row11Text"
-        app:layout_constraintEnd_toEndOf="@id/thursdayText"
-        app:layout_constraintStart_toStartOf="@id/thursdayText"
+        app:layout_constraintBottom_toBottomOf="@id/day11Widget"
+        app:layout_constraintEnd_toEndOf="@id/fridayText"
+        app:layout_constraintStart_toStartOf="@id/fridayText"
         tools:text="5" />
 
     <com.links.events.calendar.view.widget.DayEventCalendarWidget
-        android:id="@+id/row16Text"
+        android:id="@+id/day16Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@id/row11Text"
-        app:layout_constraintEnd_toEndOf="@id/fridayText"
-        app:layout_constraintStart_toStartOf="@id/fridayText"
+        app:layout_constraintBottom_toBottomOf="@id/day11Widget"
+        app:layout_constraintEnd_toEndOf="@id/saturdayText"
+        app:layout_constraintStart_toStartOf="@id/saturdayText"
         tools:text="6" />
 
     <com.links.events.calendar.view.widget.DayEventCalendarWidget
-        android:id="@+id/row17Text"
+        android:id="@+id/day17Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@id/row11Text"
-        app:layout_constraintEnd_toEndOf="@id/saturdayText"
-        app:layout_constraintStart_toStartOf="@id/saturdayText"
+        app:layout_constraintBottom_toBottomOf="@id/day11Widget"
+        app:layout_constraintEnd_toEndOf="@id/sundayText"
+        app:layout_constraintStart_toStartOf="@id/sundayText"
         tools:text="7" />
 
     <!-- ROW 2 -->
     <com.links.events.calendar.view.widget.DayEventCalendarWidget
-        android:id="@+id/row21Text"
+        android:id="@+id/day21Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="@id/sundayText"
-        app:layout_constraintStart_toStartOf="@id/sundayText"
-        app:layout_constraintTop_toBottomOf="@id/row11Text"
+        app:layout_constraintEnd_toEndOf="@id/mondayText"
+        app:layout_constraintStart_toStartOf="@id/mondayText"
+        app:layout_constraintTop_toBottomOf="@id/day11Widget"
         tools:text="21" />
 
     <com.links.events.calendar.view.widget.DayEventCalendarWidget
-        android:id="@+id/row22Text"
+        android:id="@+id/day22Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/header_monday"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@id/row21Text"
-        app:layout_constraintEnd_toEndOf="@id/mondayText"
-        app:layout_constraintStart_toStartOf="@id/mondayText"
+        app:layout_constraintBottom_toBottomOf="@id/day21Widget"
+        app:layout_constraintEnd_toEndOf="@id/tuesdayText"
+        app:layout_constraintStart_toStartOf="@id/tuesdayText"
         tools:text="22" />
 
     <com.links.events.calendar.view.widget.DayEventCalendarWidget
-        android:id="@+id/row23Text"
+        android:id="@+id/day23Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@id/row21Text"
-        app:layout_constraintEnd_toEndOf="@id/tuesdayText"
-        app:layout_constraintStart_toStartOf="@id/tuesdayText"
+        app:layout_constraintBottom_toBottomOf="@id/day21Widget"
+        app:layout_constraintEnd_toEndOf="@id/wednesdayText"
+        app:layout_constraintStart_toStartOf="@id/wednesdayText"
         tools:text="23" />
 
     <com.links.events.calendar.view.widget.DayEventCalendarWidget
-        android:id="@+id/row24Text"
+        android:id="@+id/day24Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@id/row21Text"
-        app:layout_constraintEnd_toEndOf="@id/wednesdayText"
-        app:layout_constraintStart_toStartOf="@id/wednesdayText"
+        app:layout_constraintBottom_toBottomOf="@id/day21Widget"
+        app:layout_constraintEnd_toEndOf="@id/thursdayText"
+        app:layout_constraintStart_toStartOf="@id/thursdayText"
         tools:text="24" />
 
     <com.links.events.calendar.view.widget.DayEventCalendarWidget
-        android:id="@+id/row25Text"
+        android:id="@+id/day25Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@id/row21Text"
-        app:layout_constraintEnd_toEndOf="@id/thursdayText"
-        app:layout_constraintStart_toStartOf="@id/thursdayText"
+        app:layout_constraintBottom_toBottomOf="@id/day21Widget"
+        app:layout_constraintEnd_toEndOf="@id/fridayText"
+        app:layout_constraintStart_toStartOf="@id/fridayText"
         tools:text="25" />
 
     <com.links.events.calendar.view.widget.DayEventCalendarWidget
-        android:id="@+id/row26Text"
+        android:id="@+id/day26Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@id/row21Text"
-        app:layout_constraintEnd_toEndOf="@id/fridayText"
-        app:layout_constraintStart_toStartOf="@id/fridayText"
+        app:layout_constraintBottom_toBottomOf="@id/day21Widget"
+        app:layout_constraintEnd_toEndOf="@id/saturdayText"
+        app:layout_constraintStart_toStartOf="@id/saturdayText"
         tools:text="26" />
 
     <com.links.events.calendar.view.widget.DayEventCalendarWidget
-        android:id="@+id/row27Text"
+        android:id="@+id/day27Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@id/row21Text"
-        app:layout_constraintEnd_toEndOf="@id/saturdayText"
-        app:layout_constraintStart_toStartOf="@id/saturdayText"
+        app:layout_constraintBottom_toBottomOf="@id/day21Widget"
+        app:layout_constraintEnd_toEndOf="@id/sundayText"
+        app:layout_constraintStart_toStartOf="@id/sundayText"
         tools:text="27" />
 
     <!-- ROW 3 -->
     <com.links.events.calendar.view.widget.DayEventCalendarWidget
-        android:id="@+id/row31Text"
+        android:id="@+id/day31Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="@id/sundayText"
-        app:layout_constraintStart_toStartOf="@id/sundayText"
-        app:layout_constraintTop_toBottomOf="@id/row21Text"
+        app:layout_constraintEnd_toEndOf="@id/mondayText"
+        app:layout_constraintStart_toStartOf="@id/mondayText"
+        app:layout_constraintTop_toBottomOf="@id/day21Widget"
         tools:text="31" />
 
     <com.links.events.calendar.view.widget.DayEventCalendarWidget
-        android:id="@+id/row32Text"
+        android:id="@+id/day32Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/header_monday"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@id/row31Text"
-        app:layout_constraintEnd_toEndOf="@id/mondayText"
-        app:layout_constraintStart_toStartOf="@id/mondayText"
+        app:layout_constraintBottom_toBottomOf="@id/day31Widget"
+        app:layout_constraintEnd_toEndOf="@id/tuesdayText"
+        app:layout_constraintStart_toStartOf="@id/tuesdayText"
         tools:text="32" />
 
     <com.links.events.calendar.view.widget.DayEventCalendarWidget
-        android:id="@+id/row33Text"
+        android:id="@+id/day33Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@id/row31Text"
-        app:layout_constraintEnd_toEndOf="@id/tuesdayText"
-        app:layout_constraintStart_toStartOf="@id/tuesdayText"
+        app:layout_constraintBottom_toBottomOf="@id/day31Widget"
+        app:layout_constraintEnd_toEndOf="@id/wednesdayText"
+        app:layout_constraintStart_toStartOf="@id/wednesdayText"
         tools:text="33" />
 
     <com.links.events.calendar.view.widget.DayEventCalendarWidget
-        android:id="@+id/row34Text"
+        android:id="@+id/day34Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@id/row31Text"
-        app:layout_constraintEnd_toEndOf="@id/wednesdayText"
-        app:layout_constraintStart_toStartOf="@id/wednesdayText"
+        app:layout_constraintBottom_toBottomOf="@id/day31Widget"
+        app:layout_constraintEnd_toEndOf="@id/thursdayText"
+        app:layout_constraintStart_toStartOf="@id/thursdayText"
         tools:text="34" />
 
     <com.links.events.calendar.view.widget.DayEventCalendarWidget
-        android:id="@+id/row35Text"
+        android:id="@+id/day35Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@id/row31Text"
-        app:layout_constraintEnd_toEndOf="@id/thursdayText"
-        app:layout_constraintStart_toStartOf="@id/thursdayText"
+        app:layout_constraintBottom_toBottomOf="@id/day31Widget"
+        app:layout_constraintEnd_toEndOf="@id/fridayText"
+        app:layout_constraintStart_toStartOf="@id/fridayText"
         tools:text="35" />
 
     <com.links.events.calendar.view.widget.DayEventCalendarWidget
-        android:id="@+id/row36Text"
+        android:id="@+id/day36Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@id/row31Text"
-        app:layout_constraintEnd_toEndOf="@id/fridayText"
-        app:layout_constraintStart_toStartOf="@id/fridayText"
+        app:layout_constraintBottom_toBottomOf="@id/day31Widget"
+        app:layout_constraintEnd_toEndOf="@id/saturdayText"
+        app:layout_constraintStart_toStartOf="@id/saturdayText"
         tools:text="36" />
 
     <com.links.events.calendar.view.widget.DayEventCalendarWidget
-        android:id="@+id/row37Text"
+        android:id="@+id/day37Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@id/row31Text"
-        app:layout_constraintEnd_toEndOf="@id/saturdayText"
-        app:layout_constraintStart_toStartOf="@id/saturdayText"
+        app:layout_constraintBottom_toBottomOf="@id/day31Widget"
+        app:layout_constraintEnd_toEndOf="@id/sundayText"
+        app:layout_constraintStart_toStartOf="@id/sundayText"
         tools:text="37" />
 
     <!-- ROW 4 -->
     <com.links.events.calendar.view.widget.DayEventCalendarWidget
-        android:id="@+id/row41Text"
+        android:id="@+id/day41Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="@id/sundayText"
-        app:layout_constraintStart_toStartOf="@id/sundayText"
-        app:layout_constraintTop_toBottomOf="@id/row31Text"
+        app:layout_constraintEnd_toEndOf="@id/mondayText"
+        app:layout_constraintStart_toStartOf="@id/mondayText"
+        app:layout_constraintTop_toBottomOf="@id/day31Widget"
         tools:text="41" />
 
     <com.links.events.calendar.view.widget.DayEventCalendarWidget
-        android:id="@+id/row42Text"
+        android:id="@+id/day42Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/header_monday"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@id/row41Text"
-        app:layout_constraintEnd_toEndOf="@id/mondayText"
-        app:layout_constraintStart_toStartOf="@id/mondayText"
+        app:layout_constraintBottom_toBottomOf="@id/day41Widget"
+        app:layout_constraintEnd_toEndOf="@id/tuesdayText"
+        app:layout_constraintStart_toStartOf="@id/tuesdayText"
         tools:text="42" />
 
     <com.links.events.calendar.view.widget.DayEventCalendarWidget
-        android:id="@+id/row43Text"
+        android:id="@+id/day43Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@id/row41Text"
-        app:layout_constraintEnd_toEndOf="@id/tuesdayText"
-        app:layout_constraintStart_toStartOf="@id/tuesdayText"
+        app:layout_constraintBottom_toBottomOf="@id/day41Widget"
+        app:layout_constraintEnd_toEndOf="@id/wednesdayText"
+        app:layout_constraintStart_toStartOf="@id/wednesdayText"
         tools:text="43" />
 
     <com.links.events.calendar.view.widget.DayEventCalendarWidget
-        android:id="@+id/row44Text"
+        android:id="@+id/day44Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@id/row41Text"
-        app:layout_constraintEnd_toEndOf="@id/wednesdayText"
-        app:layout_constraintStart_toStartOf="@id/wednesdayText"
+        app:layout_constraintBottom_toBottomOf="@id/day41Widget"
+        app:layout_constraintEnd_toEndOf="@id/thursdayText"
+        app:layout_constraintStart_toStartOf="@id/thursdayText"
         tools:text="44" />
 
     <com.links.events.calendar.view.widget.DayEventCalendarWidget
-        android:id="@+id/row45Text"
+        android:id="@+id/day45Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@id/row41Text"
-        app:layout_constraintEnd_toEndOf="@id/thursdayText"
-        app:layout_constraintStart_toStartOf="@id/thursdayText"
+        app:layout_constraintBottom_toBottomOf="@id/day41Widget"
+        app:layout_constraintEnd_toEndOf="@id/fridayText"
+        app:layout_constraintStart_toStartOf="@id/fridayText"
         tools:text="45" />
 
     <com.links.events.calendar.view.widget.DayEventCalendarWidget
-        android:id="@+id/row46Text"
+        android:id="@+id/day46Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@id/row41Text"
-        app:layout_constraintEnd_toEndOf="@id/fridayText"
-        app:layout_constraintStart_toStartOf="@id/fridayText"
+        app:layout_constraintBottom_toBottomOf="@id/day41Widget"
+        app:layout_constraintEnd_toEndOf="@id/saturdayText"
+        app:layout_constraintStart_toStartOf="@id/saturdayText"
         tools:text="46" />
 
     <com.links.events.calendar.view.widget.DayEventCalendarWidget
-        android:id="@+id/row47Text"
+        android:id="@+id/day47Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@id/row41Text"
-        app:layout_constraintEnd_toEndOf="@id/saturdayText"
-        app:layout_constraintStart_toStartOf="@id/saturdayText"
+        app:layout_constraintBottom_toBottomOf="@id/day41Widget"
+        app:layout_constraintEnd_toEndOf="@id/sundayText"
+        app:layout_constraintStart_toStartOf="@id/sundayText"
         tools:text="47" />
 
     <!-- ROW 5 -->
     <com.links.events.calendar.view.widget.DayEventCalendarWidget
-        android:id="@+id/row51Text"
+        android:id="@+id/day51Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="@id/sundayText"
-        app:layout_constraintStart_toStartOf="@id/sundayText"
-        app:layout_constraintTop_toBottomOf="@id/row41Text"
+        app:layout_constraintEnd_toEndOf="@id/mondayText"
+        app:layout_constraintStart_toStartOf="@id/mondayText"
+        app:layout_constraintTop_toBottomOf="@id/day41Widget"
         tools:text="51" />
 
     <com.links.events.calendar.view.widget.DayEventCalendarWidget
-        android:id="@+id/row52Text"
+        android:id="@+id/day52Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/header_monday"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@id/row51Text"
-        app:layout_constraintEnd_toEndOf="@id/mondayText"
-        app:layout_constraintStart_toStartOf="@id/mondayText"
+        app:layout_constraintBottom_toBottomOf="@id/day51Widget"
+        app:layout_constraintEnd_toEndOf="@id/tuesdayText"
+        app:layout_constraintStart_toStartOf="@id/tuesdayText"
         tools:text="52" />
 
     <com.links.events.calendar.view.widget.DayEventCalendarWidget
-        android:id="@+id/row53Text"
+        android:id="@+id/day53Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@id/row51Text"
-        app:layout_constraintEnd_toEndOf="@id/tuesdayText"
-        app:layout_constraintStart_toStartOf="@id/tuesdayText"
+        app:layout_constraintBottom_toBottomOf="@id/day51Widget"
+        app:layout_constraintEnd_toEndOf="@id/wednesdayText"
+        app:layout_constraintStart_toStartOf="@id/wednesdayText"
         tools:text="53" />
 
     <com.links.events.calendar.view.widget.DayEventCalendarWidget
-        android:id="@+id/row54Text"
+        android:id="@+id/day54Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@id/row51Text"
-        app:layout_constraintEnd_toEndOf="@id/wednesdayText"
-        app:layout_constraintStart_toStartOf="@id/wednesdayText"
+        app:layout_constraintBottom_toBottomOf="@id/day51Widget"
+        app:layout_constraintEnd_toEndOf="@id/thursdayText"
+        app:layout_constraintStart_toStartOf="@id/thursdayText"
         tools:text="54" />
 
     <com.links.events.calendar.view.widget.DayEventCalendarWidget
-        android:id="@+id/row55Text"
+        android:id="@+id/day55Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@id/row51Text"
-        app:layout_constraintEnd_toEndOf="@id/thursdayText"
-        app:layout_constraintStart_toStartOf="@id/thursdayText"
+        app:layout_constraintBottom_toBottomOf="@id/day51Widget"
+        app:layout_constraintEnd_toEndOf="@id/fridayText"
+        app:layout_constraintStart_toStartOf="@id/fridayText"
         tools:text="55" />
 
     <com.links.events.calendar.view.widget.DayEventCalendarWidget
-        android:id="@+id/row56Text"
+        android:id="@+id/day56Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@id/row51Text"
-        app:layout_constraintEnd_toEndOf="@id/fridayText"
-        app:layout_constraintStart_toStartOf="@id/fridayText"
+        app:layout_constraintBottom_toBottomOf="@id/day51Widget"
+        app:layout_constraintEnd_toEndOf="@id/saturdayText"
+        app:layout_constraintStart_toStartOf="@id/saturdayText"
         tools:text="56" />
 
     <com.links.events.calendar.view.widget.DayEventCalendarWidget
-        android:id="@+id/row57Text"
+        android:id="@+id/day57Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@id/row51Text"
-        app:layout_constraintEnd_toEndOf="@id/saturdayText"
-        app:layout_constraintStart_toStartOf="@id/saturdayText"
+        app:layout_constraintBottom_toBottomOf="@id/day51Widget"
+        app:layout_constraintEnd_toEndOf="@id/sundayText"
+        app:layout_constraintStart_toStartOf="@id/sundayText"
         tools:text="57" />
 
     <!-- ROW 6 -->
     <com.links.events.calendar.view.widget.DayEventCalendarWidget
-        android:id="@+id/row61Text"
+        android:id="@+id/day61Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="@id/sundayText"
-        app:layout_constraintStart_toStartOf="@id/sundayText"
-        app:layout_constraintTop_toBottomOf="@id/row51Text"
+        app:layout_constraintEnd_toEndOf="@id/mondayText"
+        app:layout_constraintStart_toStartOf="@id/mondayText"
+        app:layout_constraintTop_toBottomOf="@id/day51Widget"
         tools:text="61" />
 
     <com.links.events.calendar.view.widget.DayEventCalendarWidget
-        android:id="@+id/row62Text"
+        android:id="@+id/day62Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/header_monday"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@id/row61Text"
-        app:layout_constraintEnd_toEndOf="@id/mondayText"
-        app:layout_constraintStart_toStartOf="@id/mondayText"
+        app:layout_constraintBottom_toBottomOf="@id/day61Widget"
+        app:layout_constraintEnd_toEndOf="@id/tuesdayText"
+        app:layout_constraintStart_toStartOf="@id/tuesdayText"
         tools:text="62" />
 
     <com.links.events.calendar.view.widget.DayEventCalendarWidget
-        android:id="@+id/row63Text"
+        android:id="@+id/day63Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@id/row61Text"
-        app:layout_constraintEnd_toEndOf="@id/tuesdayText"
-        app:layout_constraintStart_toStartOf="@id/tuesdayText"
+        app:layout_constraintBottom_toBottomOf="@id/day61Widget"
+        app:layout_constraintEnd_toEndOf="@id/wednesdayText"
+        app:layout_constraintStart_toStartOf="@id/wednesdayText"
         tools:text="63" />
 
     <com.links.events.calendar.view.widget.DayEventCalendarWidget
-        android:id="@+id/row64Text"
+        android:id="@+id/day64Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@id/row61Text"
-        app:layout_constraintEnd_toEndOf="@id/wednesdayText"
-        app:layout_constraintStart_toStartOf="@id/wednesdayText"
+        app:layout_constraintBottom_toBottomOf="@id/day61Widget"
+        app:layout_constraintEnd_toEndOf="@id/thursdayText"
+        app:layout_constraintStart_toStartOf="@id/thursdayText"
         tools:text="64" />
 
     <com.links.events.calendar.view.widget.DayEventCalendarWidget
-        android:id="@+id/row65Text"
+        android:id="@+id/day65Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@id/row61Text"
-        app:layout_constraintEnd_toEndOf="@id/thursdayText"
-        app:layout_constraintStart_toStartOf="@id/thursdayText"
+        app:layout_constraintBottom_toBottomOf="@id/day61Widget"
+        app:layout_constraintEnd_toEndOf="@id/fridayText"
+        app:layout_constraintStart_toStartOf="@id/fridayText"
         tools:text="65" />
 
     <com.links.events.calendar.view.widget.DayEventCalendarWidget
-        android:id="@+id/row66Text"
+        android:id="@+id/day66Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@id/row61Text"
-        app:layout_constraintEnd_toEndOf="@id/fridayText"
-        app:layout_constraintStart_toStartOf="@id/fridayText"
+        app:layout_constraintBottom_toBottomOf="@id/day61Widget"
+        app:layout_constraintEnd_toEndOf="@id/saturdayText"
+        app:layout_constraintStart_toStartOf="@id/saturdayText"
         tools:text="66" />
 
     <com.links.events.calendar.view.widget.DayEventCalendarWidget
-        android:id="@+id/row67Text"
+        android:id="@+id/day67Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@id/row61Text"
-        app:layout_constraintEnd_toEndOf="@id/saturdayText"
-        app:layout_constraintStart_toStartOf="@id/saturdayText"
+        app:layout_constraintBottom_toBottomOf="@id/day61Widget"
+        app:layout_constraintEnd_toEndOf="@id/sundayText"
+        app:layout_constraintStart_toStartOf="@id/sundayText"
         tools:text="67" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

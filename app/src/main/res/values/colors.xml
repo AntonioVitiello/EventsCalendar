@@ -5,8 +5,13 @@
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
+
+    <!-- Event Calendar -->
     <color name="black">#FF000000</color>
     <color name="black_opaque">#292929</color>
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#ABABAB</color>
+    <color name="red_light">#FF6C76</color>
+    <color name="red_20">#33E8404B</color>
+
 </resources>

@@ -18,7 +18,47 @@ class DayEventCalendarWidget : FrameLayout {
     constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
         View.inflate(context, R.layout.widget_day_event_calendar, this)
+        initView()
     }
+
+    //TODO:AV 23/08/2022 CLEANME
+    private fun initView() {
+        if (isInEditMode) {
+            dayOfMonth = true
+            today = true
+            daySelected = true
+        }
+    }
+
+    var today: Boolean
+        get() = isSelected
+        set(value) {
+            dateText.isSelected = value
+            if (value) {
+                dateText.isActivated = false
+            }
+        }
+
+    var dayOfMonth: Boolean
+        get() = isActivated
+        set(value) {
+            dateText.isActivated = value
+            if (value) {
+                dateText.isSelected = false
+            }
+        }
+
+    var daySelected: Boolean
+        get() = false
+        set(value) {
+            showCircle(
+                if (value) {
+                    CircleType.EMPTY_CIRCLE
+                } else {
+                    CircleType.NONE
+                }
+            )
+        }
 
     fun setDate(text: String? = null, type: DateType = DateType.NOT_IN_MONTH) {
         dateText.text = text
@@ -27,7 +67,7 @@ class DayEventCalendarWidget : FrameLayout {
         } else {
             val styleRes = when (type) {
                 DateType.CURRENT_WITH_EVENT -> {
-                    showCircle(CircleType.LIGHT_RED)
+                    showCircle(CircleType.DOUBLE_CIRCLE)
                     R.style.white_bold_14
                 }
                 DateType.CURRENT_WITHOUT_EVENT -> {
@@ -35,7 +75,7 @@ class DayEventCalendarWidget : FrameLayout {
                     R.style.white_bold_14
                 }
                 DateType.WITH_EVENT -> {
-                    showCircle(CircleType.MEDIUM_RED)
+                    showCircle(CircleType.CIRCLE)
                     R.style.white_bold_14
                 }
                 DateType.WITHOUT_EVENT -> {
@@ -53,17 +93,14 @@ class DayEventCalendarWidget : FrameLayout {
 
     fun showCircle(type: CircleType = CircleType.NONE) {
         val drawable = when (type) {
-            CircleType.DARK_RED -> {
-                ContextCompat.getDrawable(context, R.drawable.shape_dark_red_circle)
-            }
-            CircleType.MEDIUM_RED -> {
-                ContextCompat.getDrawable(context, R.drawable.shape_medium_red_circle)
-            }
-            CircleType.LIGHT_RED -> {
-                ContextCompat.getDrawable(context, R.drawable.shape_light_red_circle)
-            }
             CircleType.EMPTY_CIRCLE -> {
-                ContextCompat.getDrawable(context, R.drawable.shape_red_empty_circle)
+                ContextCompat.getDrawable(context, R.drawable.shape_circle_empty_red_light)
+            }
+            CircleType.DOUBLE_CIRCLE -> {
+                ContextCompat.getDrawable(context, R.drawable.shape_circle_double_red)
+            }
+            CircleType.CIRCLE -> {
+                ContextCompat.getDrawable(context, R.drawable.shape_circle_red20)
             }
             CircleType.NONE -> {
                 null
@@ -73,7 +110,7 @@ class DayEventCalendarWidget : FrameLayout {
     }
 
 
-    enum class CircleType { DARK_RED, MEDIUM_RED, LIGHT_RED, EMPTY_CIRCLE, NONE }
+    enum class CircleType { EMPTY_CIRCLE, DOUBLE_CIRCLE, CIRCLE, NONE }
     enum class DateType { WITH_EVENT, WITHOUT_EVENT, CURRENT_WITH_EVENT, CURRENT_WITHOUT_EVENT, NOT_IN_MONTH }
 
 }

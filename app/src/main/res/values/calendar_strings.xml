@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="header_sunday">S</string>
-    <string name="header_monday">M</string>
-    <string name="header_tuesday">T</string>
-    <string name="header_wednesday">W</string>
-    <string name="header_thursday">T</string>
-    <string name="header_friday">F</string>
+    <string name="header_monday">L</string>
+    <string name="header_tuesday">M</string>
+    <string name="header_wednesday">M</string>
+    <string name="header_thursday">G</string>
+    <string name="header_friday">V</string>
     <string name="header_saturday">S</string>
+    <string name="header_sunday">D</string>
 </resources>
