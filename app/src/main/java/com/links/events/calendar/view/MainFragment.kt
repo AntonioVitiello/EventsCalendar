@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.links.events.calendar.R
 import kotlinx.android.synthetic.main.fragment_main.*
@@ -27,6 +28,10 @@ class MainFragment : Fragment() {
 
     private fun initComponents() {
         closeImage.setOnClickListener { requireActivity().finish() }
+        calendarWidget.onDaySelection { date: String ->
+            //TODO:AV 24/08/2022
+            Toast.makeText(context, "Get deadline info: $date", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun testAddDeadline() {

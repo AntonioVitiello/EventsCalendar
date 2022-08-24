@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/shape_round_border_6"
-    android:paddingHorizontal="19dp"
+    android:paddingHorizontal="18dp"
     android:paddingBottom="21dp">
 
     <androidx.appcompat.widget.AppCompatTextView

@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.FrameLayout
 import com.links.events.calendar.R
 import com.links.events.calendar.tools.DateUtils
+import com.links.events.calendar.tools.DateUtils.Companion.formatDayOfYear
 import com.links.events.calendar.tools.DateUtils.Companion.parseDayOfYear
 import com.links.events.calendar.tools.capitalize
 import com.links.events.calendar.view.widget.DayEventCalendarWidget.DateType.WITHOUT_EVENT
@@ -21,6 +22,7 @@ class EventCalendarWidget : FrameLayout {
     private lateinit var dayWidgets: List<DayEventCalendarWidget>
     private var firstDayOfMonthOffset = 0
     private var dayWidgetSelected: DayEventCalendarWidget? = null
+    private var daySelectionListener: ((String) -> Unit)? = null
 
 
     constructor(context: Context) : this(context, null)
@@ -55,15 +57,23 @@ class EventCalendarWidget : FrameLayout {
         leftArrowImage.setOnClickListener { prevMonth() }
         rightArrowImage.setOnClickListener { nextMonth() }
         dayWidgets.forEach { dayWidget ->
-            dayWidget.setOnClickListener { newSelection(dayWidget) }
+            dayWidget.setOnClickListener { onNewSelection(dayWidget) }
         }
     }
 
-    private fun newSelection(dayWidget: DayEventCalendarWidget) {
+    private fun onNewSelection(dayWidget: DayEventCalendarWidget) {
         if (dayWidget.dayOfMonth) {
-            dayWidgetSelected?.daySelected = false
+            // execute selection and store new selection state
             dayWidget.daySelected = true
+            dayWidgetSelected?.daySelected = false
             dayWidgetSelected = dayWidget
+            // invoke listener for those interested
+            daySelectionListener?.let { listener ->
+                val selectionCalendar = currentCalendar.clone() as GregorianCalendar
+                selectionCalendar.set(Calendar.DAY_OF_MONTH, dayWidget.getDayOfMonth())
+                val dayOfYear = formatDayOfYear(selectionCalendar.time)
+                listener.invoke(dayOfYear)
+            }
         }
     }
 
@@ -187,6 +197,10 @@ class EventCalendarWidget : FrameLayout {
      */
     fun addAllDeadlines(dates: List<String>) {
         dates.forEach(::addDeadline)
+    }
+
+    fun onDaySelection(listener: (String) -> Unit) {
+        daySelectionListener = listener
     }
 
 }
