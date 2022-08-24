@@ -12,6 +12,8 @@ class DateUtils {
 
     companion object {
         val monthYearDateFormat by lazy(LazyThreadSafetyMode.NONE) { SimpleDateFormat("MMMM yyyy", Locale.ITALY) }
+        val dayOfWeekFormat by lazy(LazyThreadSafetyMode.NONE) { SimpleDateFormat("EEE", Locale.ITALY) }
+        val itDateFormat by lazy(LazyThreadSafetyMode.NONE) { SimpleDateFormat("EEEE dd MMMM yyyy", Locale.ITALY) }
         val iso8601DateFormat by lazy(LazyThreadSafetyMode.NONE) { SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.ITALY) }
 
         @JvmStatic
@@ -33,8 +35,23 @@ class DateUtils {
         }
 
         //"yyyy-MM-dd'T'HH:mm:ss'Z'"
-        fun formatIso8601Date(): String {
-            return formatDate(monthYearDateFormat, Date()).capitalize()
+        fun formatIso8601Date(date: Date = Date()): String {
+            return formatDate(iso8601DateFormat, date).capitalize()
+        }
+
+        //"EEEE dd MMMM yyyy"
+        fun formatItDate(date: Date = Date()): String {
+            return formatDate(itDateFormat, date).capitalize()
+        }
+
+        fun todayCalendar(): GregorianCalendar {
+            val hostTimeZone = TimeZone.getDefault()
+            return GregorianCalendar(hostTimeZone, Locale.ITALY).apply {
+                set(Calendar.HOUR_OF_DAY, 0)
+                clear(Calendar.MINUTE)
+                clear(Calendar.SECOND)
+                clear(Calendar.MILLISECOND)
+            }
         }
     }
 
