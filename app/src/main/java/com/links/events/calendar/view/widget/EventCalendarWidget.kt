@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.FrameLayout
 import com.links.events.calendar.R
 import com.links.events.calendar.tools.DateUtils
+import com.links.events.calendar.tools.DateUtils.Companion.parseDayOfYear
 import com.links.events.calendar.tools.capitalize
 import com.links.events.calendar.view.widget.DayEventCalendarWidget.DateType.WITHOUT_EVENT
 import kotlinx.android.synthetic.main.widget_event_calendar.view.*
@@ -29,6 +30,7 @@ class EventCalendarWidget : FrameLayout {
         initView()
     }
 
+    // REM:AV 24/08/2022 MonthDisplayHelper
     // val helper = MonthDisplayHelper(2022, 4, Calendar.MONDAY)
     // println("year=${helper.year}")
     // println("month=${helper.month}")
@@ -106,7 +108,7 @@ class EventCalendarWidget : FrameLayout {
         ) {
             val today = todayCalendar.get(Calendar.DAY_OF_MONTH)
             dayWidgets[getIndexOf(today)].let { dayWidget ->
-                dayWidget.setToday(true)
+                dayWidget.today = true
                 dayWidgetSelected = dayWidget
             }
         }
@@ -137,16 +139,15 @@ class EventCalendarWidget : FrameLayout {
         calendar.set(Calendar.DAY_OF_MONTH, 1)
         val dayOfWeek = DateUtils.formatDate(DateUtils.dayOfWeekFormat, calendar.time)
         return when {
-            dayOfWeek.startsWith('l', true) -> 0
-            dayOfWeek.startsWith("ma", true) -> 1
-            dayOfWeek.startsWith("me", true) -> 2
-            dayOfWeek.startsWith('g', true) -> 3
-            dayOfWeek.startsWith('v', true) -> 4
-            dayOfWeek.startsWith('s', true) -> 5
-            else -> 6
+            dayOfWeek.startsWith('l', true) -> 0  // lun
+            dayOfWeek.startsWith("ma", true) -> 1 // mar
+            dayOfWeek.startsWith("me", true) -> 2 // mer
+            dayOfWeek.startsWith('g', true) -> 3  // gio
+            dayOfWeek.startsWith('v', true) -> 4  // ven
+            dayOfWeek.startsWith('s', true) -> 5  // sab
+            else -> 6                             // dom
         }
     }
-
 
     private fun prevMonth() {
         currentCalendar.add(Calendar.MONTH, -1)
@@ -156,6 +157,36 @@ class EventCalendarWidget : FrameLayout {
     private fun nextMonth() {
         currentCalendar.add(Calendar.MONTH, 1)
         renderCalendar()
+    }
+
+    /**
+     * Add just one deadline as String to the calendar
+     *
+     * Params: date - a date string with format: yyyy/MM/dd
+     */
+    fun addDeadline(date: String) {
+        parseDayOfYear(date)?.let { dayOfYear ->
+            val eventCalendar = todayCalendar.clone() as GregorianCalendar
+            eventCalendar.time = dayOfYear
+            if (
+                currentCalendar.get(Calendar.YEAR) == eventCalendar.get(Calendar.YEAR)
+                && currentCalendar.get(Calendar.MONTH) == eventCalendar.get(Calendar.MONTH)
+            ) {
+                val eventDay = eventCalendar.get(Calendar.DAY_OF_MONTH)
+                dayWidgets[getIndexOf(eventDay)].let { dayWidget ->
+                    dayWidget.dayWithEvent = true
+                }
+            }
+        }
+    }
+
+    /**
+     * Add a list of deadlines as String to the calendar
+     *
+     * Params: datea - a list of date as String with format: yyyy/MM/dd
+     */
+    fun addAllDeadlines(dates: List<String>) {
+        dates.forEach(::addDeadline)
     }
 
 }

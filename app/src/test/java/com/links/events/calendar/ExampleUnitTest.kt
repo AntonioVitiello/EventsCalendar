@@ -105,7 +105,7 @@ class ExampleUnitTest {
     }
 
     @Test
-    fun day_in_month(){
+    fun day_in_month() {
         val helper = MonthDisplayHelper(2022, 4, Calendar.MONDAY)
         println("year=${helper.year}")
         println("month=${helper.month}")

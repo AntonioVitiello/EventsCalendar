@@ -12,6 +12,10 @@
         <item name="android:textColor">@color/gray</item>
     </style>
 
+    <style name="gray_medium_16" parent="gray_medium_12">
+        <item name="android:textSize">16dp</item>
+    </style>
+
     <style name="gray_medium_14" parent="gray_medium_12">
         <item name="android:textSize">14dp</item>
     </style>

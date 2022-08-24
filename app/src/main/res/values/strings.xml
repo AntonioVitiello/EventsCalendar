@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">EventsCalendar</string>
+    <string name="app_name" translatable="false">EventsCalendar</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="event_calendar_title">Calendario del mese</string>
+    <string name="event_calendar_title" translatable="false">Calendario eventi del mese</string>
 </resources>

@@ -13,7 +13,9 @@ import kotlinx.android.synthetic.main.widget_day_event_calendar.view.*
  * Created by Antonio Vitiello
  */
 class DayEventCalendarWidget : FrameLayout {
-    private var today = false
+    private var _today = false
+    private var _dayWithEvent = false
+    private var _daySelected = false
     var dayOfMonth = false
         private set
 
@@ -34,24 +36,37 @@ class DayEventCalendarWidget : FrameLayout {
         }
     }
 
-    fun isToday(): Boolean {
-        return today
-    }
-
-    fun setToday(value: Boolean) {
-        if (value) {
-            val color = ContextCompat.getColor(context, R.color.red_light)
-            dateText.setTextColor(color)
-            daySelected = true
+    var today: Boolean
+        get() = _today
+        set(value) {
+            _today = value
+            if (value) {
+                val color = ContextCompat.getColor(context, R.color.red_light)
+                dateText.setTextColor(color)
+                daySelected = true
+            }
         }
-    }
 
     var daySelected: Boolean
-        get() = false
+        get() = _daySelected
         set(value) {
+            _daySelected = value
             showCircle(
                 if (value) {
                     CircleType.EMPTY_CIRCLE
+                } else {
+                    CircleType.NONE
+                }
+            )
+        }
+
+    var dayWithEvent: Boolean
+        get() = _dayWithEvent
+        set(value) {
+            _dayWithEvent = value
+            showCircle(
+                if (value) {
+                    CircleType.CIRCLE
                 } else {
                     CircleType.NONE
                 }
