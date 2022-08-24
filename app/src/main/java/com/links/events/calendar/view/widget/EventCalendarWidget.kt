@@ -7,7 +7,6 @@ import android.widget.FrameLayout
 import com.links.events.calendar.R
 import com.links.events.calendar.tools.DateUtils
 import com.links.events.calendar.tools.capitalize
-import com.links.events.calendar.view.widget.DayEventCalendarWidget.DateType.CURRENT_WITHOUT_EVENT
 import com.links.events.calendar.view.widget.DayEventCalendarWidget.DateType.WITHOUT_EVENT
 import kotlinx.android.synthetic.main.widget_event_calendar.view.*
 import java.util.*
@@ -19,6 +18,8 @@ class EventCalendarWidget : FrameLayout {
     private val todayCalendar = DateUtils.todayCalendar() //do not change date, clone instead!
     private var currentCalendar = todayCalendar.clone() as GregorianCalendar
     private lateinit var dayWidgets: List<DayEventCalendarWidget>
+    private var firstDayOfMonthOffset = 0
+    private var dayWidgetSelected: DayEventCalendarWidget? = null
 
 
     constructor(context: Context) : this(context, null)
@@ -27,6 +28,15 @@ class EventCalendarWidget : FrameLayout {
         View.inflate(context, R.layout.widget_event_calendar, this)
         initView()
     }
+
+    // val helper = MonthDisplayHelper(2022, 4, Calendar.MONDAY)
+    // println("year=${helper.year}")
+    // println("month=${helper.month}")
+    // println("numberOfDaysInMonth=${helper.numberOfDaysInMonth}")
+    // println("offset=${helper.offset}")
+    // println("weekStartDay=${helper.weekStartDay}")
+    // println("getRowOf=${helper.getRowOf(10)}")
+    // println("getColumnOf=${helper.getColumnOf(10)}")
 
     private fun initView() {
         dayWidgets = listOf(
@@ -42,18 +52,29 @@ class EventCalendarWidget : FrameLayout {
 
         leftArrowImage.setOnClickListener { prevMonth() }
         rightArrowImage.setOnClickListener { nextMonth() }
+        dayWidgets.forEach { dayWidget ->
+            dayWidget.setOnClickListener { newSelection(dayWidget) }
+        }
+    }
+
+    private fun newSelection(dayWidget: DayEventCalendarWidget) {
+        if (dayWidget.dayOfMonth) {
+            dayWidgetSelected?.daySelected = false
+            dayWidget.daySelected = true
+            dayWidgetSelected = dayWidget
+        }
     }
 
     private fun renderCalendar() {
         // Month and Year
         monthText.text = DateUtils.formatMonthYear(currentCalendar.time).capitalize()
 
-        val firstDayOfWeekInMonth = firstDayOfWeekInMonth(currentCalendar)
+        firstDayOfMonthOffset = firstDayOfMonthOffset(currentCalendar)
         val lastDayInMonth = currentCalendar.getActualMaximum(Calendar.DATE)
 
         // Render Last days of previous Month
         var day = lastDayOfPreviousMonth()
-        var startIndex = firstDayOfWeekInMonth - 1
+        var startIndex = firstDayOfMonthOffset - 1
         var endIndex = 0
         for (i in startIndex downTo endIndex) {
             dayWidgets[i].setDate(day.toString())
@@ -62,10 +83,10 @@ class EventCalendarWidget : FrameLayout {
 
         // Render days of Current Month
         day = 1
-        startIndex = firstDayOfWeekInMonth
-        endIndex = lastDayInMonth + firstDayOfWeekInMonth
+        startIndex = firstDayOfMonthOffset
+        endIndex = lastDayInMonth + firstDayOfMonthOffset
         for (i in startIndex until endIndex) {
-            dayWidgets[i].setDate(day.toString(), WITHOUT_EVENT)
+            dayWidgets[i].setDate(day.toString(), WITHOUT_EVENT, true)
             day++
         }
 
@@ -77,6 +98,32 @@ class EventCalendarWidget : FrameLayout {
             dayWidgets[i].setDate(day.toString())
             day++
         }
+
+        // Select today if in this Month
+        if (
+            currentCalendar.get(Calendar.YEAR) == todayCalendar.get(Calendar.YEAR)
+            && currentCalendar.get(Calendar.MONTH) == todayCalendar.get(Calendar.MONTH)
+        ) {
+            val today = todayCalendar.get(Calendar.DAY_OF_MONTH)
+            dayWidgets[getIndexOf(today)].let { dayWidget ->
+                dayWidget.setToday(true)
+                dayWidgetSelected = dayWidget
+            }
+        }
+    }
+
+    private fun getIndexOf(day: Int): Int {
+        val rowIndex = getRowOf(day)
+        val columnIndex = getColumnOf(day)
+        return rowIndex * 7 + columnIndex
+    }
+
+    private fun getRowOf(day: Int): Int {
+        return (day + firstDayOfMonthOffset - 1) / 7
+    }
+
+    private fun getColumnOf(day: Int): Int {
+        return (day + firstDayOfMonthOffset - 1) % 7
     }
 
     private fun lastDayOfPreviousMonth(): Int {
@@ -86,7 +133,7 @@ class EventCalendarWidget : FrameLayout {
         }
     }
 
-    private fun firstDayOfWeekInMonth(calendar: GregorianCalendar): Int {
+    private fun firstDayOfMonthOffset(calendar: GregorianCalendar): Int {
         calendar.set(Calendar.DAY_OF_MONTH, 1)
         val dayOfWeek = DateUtils.formatDate(DateUtils.dayOfWeekFormat, calendar.time)
         return when {

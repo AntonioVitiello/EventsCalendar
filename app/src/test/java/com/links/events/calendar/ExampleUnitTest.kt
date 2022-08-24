@@ -1,5 +1,6 @@
 package com.links.events.calendar
 
+import android.util.MonthDisplayHelper
 import com.links.events.calendar.tools.DateUtils
 import org.junit.Assert.assertEquals
 import org.junit.Test
@@ -101,5 +102,16 @@ class ExampleUnitTest {
             dayOfWeek.startsWith('s', true) -> 5
             else -> 6
         }
+    }
+
+    @Test
+    fun day_in_month(){
+        val helper = MonthDisplayHelper(2022, 4, Calendar.MONDAY)
+        println("year=${helper.year}")
+        println("month=${helper.month}")
+        println("numberOfDaysInMonth=${helper.numberOfDaysInMonth}")
+        println("offset=${helper.offset}")
+        println("weekStartDay=${helper.weekStartDay}")
+        println("getColumnOf=${helper.getColumnOf(10)}") //2
     }
 }

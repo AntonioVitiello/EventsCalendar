@@ -13,6 +13,10 @@ import kotlinx.android.synthetic.main.widget_day_event_calendar.view.*
  * Created by Antonio Vitiello
  */
 class DayEventCalendarWidget : FrameLayout {
+    private var today = false
+    var dayOfMonth = false
+        private set
+
 
     constructor(context: Context) : this(context, null)
     constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
@@ -30,23 +34,17 @@ class DayEventCalendarWidget : FrameLayout {
         }
     }
 
-    var today: Boolean
-        get() = isSelected
-        set(value) {
-            dateText.isSelected = value
-            if (value) {
-                dateText.isActivated = false
-            }
-        }
+    fun isToday(): Boolean {
+        return today
+    }
 
-    var dayOfMonth: Boolean
-        get() = isActivated
-        set(value) {
-            dateText.isActivated = value
-            if (value) {
-                dateText.isSelected = false
-            }
+    fun setToday(value: Boolean) {
+        if (value) {
+            val color = ContextCompat.getColor(context, R.color.red_light)
+            dateText.setTextColor(color)
+            daySelected = true
         }
+    }
 
     var daySelected: Boolean
         get() = false
@@ -60,11 +58,12 @@ class DayEventCalendarWidget : FrameLayout {
             )
         }
 
-    fun setDate(text: String? = null, type: DateType = DateType.NOT_IN_MONTH) {
+    fun setDate(text: String? = null, type: DateType = DateType.NOT_IN_MONTH, activeDay: Boolean = false) {
         dateText.text = text
         if (text.isNullOrEmpty()) {
             showCircle(CircleType.NONE)
         } else {
+            dayOfMonth = activeDay
             val styleRes = when (type) {
                 DateType.CURRENT_WITH_EVENT -> {
                     showCircle(CircleType.DOUBLE_CIRCLE)
