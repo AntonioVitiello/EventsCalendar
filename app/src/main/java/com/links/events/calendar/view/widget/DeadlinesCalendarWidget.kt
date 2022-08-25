@@ -6,10 +6,13 @@ import android.view.View
 import android.widget.FrameLayout
 import com.links.events.calendar.R
 import com.links.events.calendar.model.DeadlineModel
-import com.links.events.calendar.tools.DateUtils
+import com.links.events.calendar.tools.DateUtils.Companion.dayOfWeekFormat
+import com.links.events.calendar.tools.DateUtils.Companion.formatDate
+import com.links.events.calendar.tools.DateUtils.Companion.formatDayOfYear
+import com.links.events.calendar.tools.DateUtils.Companion.formatMonthYear
 import com.links.events.calendar.tools.DateUtils.Companion.parseDayOfYearOrNull
+import com.links.events.calendar.tools.DateUtils.Companion.todayCalendar
 import com.links.events.calendar.tools.SafeClickListener
-import com.links.events.calendar.tools.capitalize
 import com.links.events.calendar.view.widget.DeadlineDayWidget.DateType.WITHOUT_EVENT
 import kotlinx.android.synthetic.main.widget_event_calendar.view.*
 import java.util.*
@@ -18,7 +21,7 @@ import java.util.*
  * Created by Antonio Vitiello
  */
 class DeadlinesCalendarWidget : FrameLayout {
-    private val todayCalendar = DateUtils.todayCalendar() //do not change date, clone instead!
+    private val todayCalendar = todayCalendar() //do not change date, clone instead!
     private var currentCalendar = todayCalendar.clone() as GregorianCalendar
     private lateinit var dayWidgets: List<DeadlineDayWidget>
     private var firstDayOfMonthOffset = 0
@@ -64,7 +67,7 @@ class DeadlinesCalendarWidget : FrameLayout {
     }
 
     private fun onNewSelection(dayWidget: DeadlineDayWidget) {
-        if (dayWidget.dayOfMonth) {
+        if (dayWidget.dayInMonth) {
             // execute selection and store new selection state
             dayWidget.daySelected = true
             if (dayWidget != dayWidgetSelected) {
@@ -75,14 +78,23 @@ class DeadlinesCalendarWidget : FrameLayout {
             daySelectionListener?.let { listener ->
                 dayWidget.eventData?.let { deadline ->
                     listener.invoke(deadline)
+                } ?: run {
+                    val date = getDayOfYear(dayWidget)
+                    listener.invoke(DeadlineModel(date))
                 }
             }
         }
     }
 
+    private fun getDayOfYear(dayWidget: DeadlineDayWidget): String {
+        val calendar = currentCalendar.clone() as GregorianCalendar
+        calendar.set(Calendar.DAY_OF_MONTH, dayWidget.getDayOfMonth())
+        return formatDayOfYear(calendar.time)
+    }
+
     private fun renderCalendar() {
         // Month and Year
-        monthText.text = DateUtils.formatMonthYear(currentCalendar.time).capitalize()
+        monthText.text = formatMonthYear(currentCalendar.time)
 
         firstDayOfMonthOffset = firstDayOfMonthOffset(currentCalendar)
         val lastDayInMonth = currentCalendar.getActualMaximum(Calendar.DATE)
@@ -123,6 +135,11 @@ class DeadlinesCalendarWidget : FrameLayout {
             dayWidgets[getIndexOf(today)].let { dayWidget ->
                 dayWidget.today = true
                 dayWidgetSelected = dayWidget
+                // TODO:AV 25/08/2022 daySelectionListener is null here!!! AAA
+                daySelectionListener?.let { listener ->
+                    val date = formatDayOfYear(todayCalendar.time)
+                    listener.invoke(DeadlineModel(date))
+                }
             }
         }
     }
@@ -154,7 +171,7 @@ class DeadlinesCalendarWidget : FrameLayout {
 
     private fun firstDayOfMonthOffset(calendar: GregorianCalendar): Int {
         calendar.set(Calendar.DAY_OF_MONTH, 1)
-        val dayOfWeek = DateUtils.formatDate(DateUtils.dayOfWeekFormat, calendar.time)
+        val dayOfWeek = formatDate(dayOfWeekFormat, calendar.time)
         return when {
             dayOfWeek.startsWith('l', true) -> 0  // lun
             dayOfWeek.startsWith("ma", true) -> 1 // mar
@@ -169,13 +186,13 @@ class DeadlinesCalendarWidget : FrameLayout {
     private fun prevMonth() {
         currentCalendar.add(Calendar.MONTH, -1)
         renderCalendar()
-        monthChangeListener?.invoke(DateUtils.formatDayOfYear(currentCalendar.time))
+        monthChangeListener?.invoke(formatDayOfYear(currentCalendar.time))
     }
 
     private fun nextMonth() {
         currentCalendar.add(Calendar.MONTH, 1)
         renderCalendar()
-        monthChangeListener?.invoke(DateUtils.formatDayOfYear(currentCalendar.time))
+        monthChangeListener?.invoke(formatDayOfYear(currentCalendar.time))
     }
 
     /**

@@ -29,6 +29,34 @@ private val descriptions = listOf(
     "SCADENZA Z"
 )
 
+fun getDeadlinesByDate(data: String): List<DeadlineModel> {
+    val split = data.split("/")
+    val year = split[0]
+    val month = split[1]
+    return listOf(
+        DeadlineModel(
+            "$year/$month/${(1..24).random()}",
+            listOf(descriptions.random(), descriptions.random(), descriptions.random())
+        ),
+        DeadlineModel(
+            "$year/$month/${(1..24).random()}",
+            listOf(descriptions.random(), descriptions.random(), descriptions.random())
+        ),
+        DeadlineModel(
+            "$year/$month/${(1..24).random()}",
+            listOf(descriptions.random(), descriptions.random(), descriptions.random())
+        ),
+        DeadlineModel(
+            "$year/$month/${(1..24).random()}",
+            listOf(descriptions.random(), descriptions.random(), descriptions.random())
+        ),
+        DeadlineModel(
+            "$year/$month/${(1..24).random()}",
+            listOf(descriptions.random(), descriptions.random(), descriptions.random())
+        )
+    )
+}
+
 fun getMonthDeadlines(): List<DeadlineModel> {
     return listOf(
         DeadlineModel(
@@ -41,7 +69,7 @@ fun getMonthDeadlines(): List<DeadlineModel> {
             "2022/08/16", listOf(descriptions.random(), descriptions.random(), descriptions.random())
         ),
         DeadlineModel(
-            "2022/08/25", listOf(descriptions.random(), descriptions.random(), descriptions.random())
+            "2022/08/26", listOf(descriptions.random(), descriptions.random(), descriptions.random())
         ),
         DeadlineModel(
             "2022/08/28", listOf(descriptions.random(), descriptions.random(), descriptions.random())
@@ -55,34 +83,6 @@ fun getDeadlineByDate(date: String): DeadlineModel {
             "1 ${descriptions.random()}",
             descriptions.random(),
             descriptions.random()
-        )
-    )
-}
-
-fun getDeadlinesByDate(data: String): List<DeadlineModel> {
-    val split = data.split("/")
-    val year = split[0]
-    val month = split[1]
-    return listOf(
-        DeadlineModel(
-            "$year/$month/${(1..31).random()}",
-            listOf(descriptions.random(), descriptions.random(), descriptions.random())
-        ),
-        DeadlineModel(
-            "$year/$month/${(1..31).random()}",
-            listOf(descriptions.random(), descriptions.random(), descriptions.random())
-        ),
-        DeadlineModel(
-            "$year/$month/${(1..31).random()}",
-            listOf(descriptions.random(), descriptions.random(), descriptions.random())
-        ),
-        DeadlineModel(
-            "$year/$month/${(1..31).random()}",
-            listOf(descriptions.random(), descriptions.random(), descriptions.random())
-        ),
-        DeadlineModel(
-            "$year/$month/${(1..31).random()}",
-            listOf(descriptions.random(), descriptions.random(), descriptions.random())
         )
     )
 }

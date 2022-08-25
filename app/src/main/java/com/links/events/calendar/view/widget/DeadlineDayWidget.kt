@@ -18,7 +18,7 @@ class DeadlineDayWidget : FrameLayout {
     private var _dayWithEvent = false
     private var _daySelected = false
     private var _eventData: DeadlineModel? = null
-    var dayOfMonth = false
+    var dayInMonth = false
         private set
 
     enum class CircleType { EMPTY_CIRCLE, DOUBLE_CIRCLE, CIRCLE, NONE }
@@ -35,7 +35,7 @@ class DeadlineDayWidget : FrameLayout {
     //TODO:AV 23/08/2022 CLEANME
     private fun initView() {
         if (isInEditMode) {
-            dayOfMonth = true
+            dayInMonth = true
             today = true
             daySelected = true
             dayWithEvent = true
@@ -99,7 +99,7 @@ class DeadlineDayWidget : FrameLayout {
         today = false
         dayWithEvent = false
         daySelected = false
-        dayOfMonth = false
+        dayInMonth = false
         eventData = null
     }
 
@@ -113,7 +113,7 @@ class DeadlineDayWidget : FrameLayout {
         if (day.isNullOrEmpty()) {
             showCircle(CircleType.NONE)
         } else {
-            dayOfMonth = activeDay
+            dayInMonth = activeDay
             val styleRes = when (type) {
                 DateType.CURRENT_WITH_EVENT -> {
                     showCircle(CircleType.DOUBLE_CIRCLE)

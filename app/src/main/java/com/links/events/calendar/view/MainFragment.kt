@@ -42,7 +42,6 @@ class MainFragment : Fragment() {
 
     private fun initComponents() {
         closeImage.setOnClickListener { requireActivity().finish() }
-        blackboardWidget.setDeadlines(DeadlineModel(DateUtils.formatDayOfYear()))
 
         // On day selection fill calendar events blackboard
         calendarWidget.setDaySelectionListener { deadline: DeadlineModel ->
@@ -50,8 +49,9 @@ class MainFragment : Fragment() {
         }
 
         // On month change load new deadlines
-        calendarWidget.setMonthChangeListener { data: String ->
-            viewModel.loadDeadLinesByDate(WeakReference(activity), data)
+        calendarWidget.setMonthChangeListener { date: String ->
+            viewModel.loadDeadLinesByDate(WeakReference(activity), date)
+            blackboardWidget.clean(date)
         }
     }
 

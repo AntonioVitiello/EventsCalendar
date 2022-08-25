@@ -51,7 +51,7 @@ class EventCalendarWidgetTest {
 
     @Test
     fun getCurrentMonth4() {
-        val currentDate = DateUtils.formatMonthYear().capitalize()
+        val currentDate = DateUtils.formatMonthYear()
         println("SimpleDateFormat-4: currentDate = $currentDate")
     }
 

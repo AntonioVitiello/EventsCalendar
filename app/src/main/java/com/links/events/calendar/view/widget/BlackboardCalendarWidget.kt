@@ -68,10 +68,18 @@ class BlackboardCalendarWidget : FrameLayout {
     private fun fillDate(date: String) {
         val dayOfYear = DateUtils.parseDayOfYearOrNull(date)
         dateText.text = if (dayOfYear != null) {
-            DateUtils.formatMonthYear(dayOfYear, false)
+            DateUtils.formatDayMonth(dayOfYear)
         } else {
             null
         }
+    }
+
+    fun clean(date: String) {
+        dateText.text = DateUtils.parseDayOfYearOrNull(date)?.let {
+            DateUtils.formatMonthYear(it, false)
+        }
+        titleText.text = context.getText(R.string.no_selected_day)
+        eventsRecycler.isVisible = false
     }
 
 }
