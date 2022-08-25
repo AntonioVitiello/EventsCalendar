@@ -66,7 +66,7 @@ class EventCalendarWidget : FrameLayout {
         if (dayWidget.dayOfMonth) {
             // execute selection and store new selection state
             dayWidget.daySelected = true
-            if(dayWidget != dayWidgetSelected) {
+            if (dayWidget != dayWidgetSelected) {
                 dayWidgetSelected?.daySelected = false
                 dayWidgetSelected = dayWidget
             }
@@ -199,7 +199,17 @@ class EventCalendarWidget : FrameLayout {
                 && currentCalendar.get(Calendar.MONTH) == eventCalendar.get(Calendar.MONTH)
             ) {
                 val eventDay = eventCalendar.get(Calendar.DAY_OF_MONTH)
-                dayWidgets[getIndexOf(eventDay)].dayWithEvent = true
+                dayWidgets[getIndexOf(eventDay)].let { dayWidget ->
+                    dayWidget.dayWithEvent = true
+                    if (dayWidget.today){
+                        daySelectionListener?.let { listener ->
+                            val selectionCalendar = currentCalendar.clone() as GregorianCalendar
+                            selectionCalendar.set(Calendar.DAY_OF_MONTH, dayWidget.getDayOfMonth())
+                            val today = formatDayOfYear(selectionCalendar.time)
+                            listener.invoke(today)
+                        }
+                    }
+                }
             }
         }
     }
