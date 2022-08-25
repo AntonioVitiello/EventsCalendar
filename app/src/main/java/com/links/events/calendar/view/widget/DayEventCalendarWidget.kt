@@ -7,6 +7,7 @@ import android.widget.FrameLayout
 import androidx.core.content.ContextCompat
 import androidx.core.widget.TextViewCompat
 import com.links.events.calendar.R
+import com.links.events.calendar.model.DeadlineModel
 import kotlinx.android.synthetic.main.widget_day_event_calendar.view.*
 
 /**
@@ -16,8 +17,12 @@ class DayEventCalendarWidget : FrameLayout {
     private var _today = false
     private var _dayWithEvent = false
     private var _daySelected = false
+    private var _eventData: DeadlineModel? = null
     var dayOfMonth = false
         private set
+
+    enum class CircleType { EMPTY_CIRCLE, DOUBLE_CIRCLE, CIRCLE, NONE }
+    enum class DateType { WITH_EVENT, WITHOUT_EVENT, CURRENT_WITH_EVENT, CURRENT_WITHOUT_EVENT, NOT_IN_MONTH }
 
 
     constructor(context: Context) : this(context, null)
@@ -151,8 +156,10 @@ class DayEventCalendarWidget : FrameLayout {
         circleImage.setImageDrawable(drawable)
     }
 
-
-    enum class CircleType { EMPTY_CIRCLE, DOUBLE_CIRCLE, CIRCLE, NONE }
-    enum class DateType { WITH_EVENT, WITHOUT_EVENT, CURRENT_WITH_EVENT, CURRENT_WITHOUT_EVENT, NOT_IN_MONTH }
+    var eventData: DeadlineModel?
+        get() = _eventData
+        set(value) {
+            _eventData = value
+        }
 
 }

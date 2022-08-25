@@ -7,13 +7,12 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.links.events.calendar.R
+import com.links.events.calendar.data.source.getDeadlineByDate
+import com.links.events.calendar.data.source.getMonthDeadlines
+import com.links.events.calendar.model.DeadlineModel
 import kotlinx.android.synthetic.main.fragment_main.*
 
 class MainFragment : Fragment() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_main, container, false)
@@ -28,21 +27,20 @@ class MainFragment : Fragment() {
 
     private fun initComponents() {
         closeImage.setOnClickListener { requireActivity().finish() }
-        calendarWidget.onDaySelection { date: String ->
-            //TODO:AV 24/08/2022
-            Toast.makeText(context, "Get deadline info: $date", Toast.LENGTH_SHORT).show()
+        calendarWidget.setDaySelectionListener { deadline: DeadlineModel ->
+            //TODO:AV 24/08/2022 invoke event widget
+            Toast.makeText(context, "Get deadline info: ${deadline.date}", Toast.LENGTH_SHORT).show()
         }
     }
 
     private fun testAddDeadline() {
-        calendarWidget.addDeadline("2022/07/20") // ignored becouse not in this month
-        calendarWidget.addDeadline("2022/08/20")
-        calendarWidget.addDeadline("2022/09/20") // ignored becouse not in this month
+        calendarWidget.addDeadline(getDeadlineByDate("2022/07/20")) // ignored becouse not in this month
+        calendarWidget.addDeadline(getDeadlineByDate("2022/08/20"))
+        calendarWidget.addDeadline(getDeadlineByDate("2022/09/20")) // ignored becouse not in this month
     }
 
     private fun testAddDeadlines() {
-        val deadlines = listOf("2022/08/7", "2022/08/8", "2022/08/8", "2022/08/25", "2022/07/25", "2022/09/25")
-        calendarWidget.addAllDeadlines(deadlines)
+        calendarWidget.addAllDeadlines(getMonthDeadlines())
     }
 
 }

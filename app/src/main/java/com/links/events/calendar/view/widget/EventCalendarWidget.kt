@@ -5,8 +5,8 @@ import android.util.AttributeSet
 import android.view.View
 import android.widget.FrameLayout
 import com.links.events.calendar.R
+import com.links.events.calendar.model.DeadlineModel
 import com.links.events.calendar.tools.DateUtils
-import com.links.events.calendar.tools.DateUtils.Companion.formatDayOfYear
 import com.links.events.calendar.tools.DateUtils.Companion.parseDayOfYear
 import com.links.events.calendar.tools.SafeClickListener
 import com.links.events.calendar.tools.capitalize
@@ -23,7 +23,7 @@ class EventCalendarWidget : FrameLayout {
     private lateinit var dayWidgets: List<DayEventCalendarWidget>
     private var firstDayOfMonthOffset = 0
     private var dayWidgetSelected: DayEventCalendarWidget? = null
-    private var daySelectionListener: ((String) -> Unit)? = null
+    private var daySelectionListener: ((DeadlineModel) -> Unit)? = null
 
 
     constructor(context: Context) : this(context, null)
@@ -72,10 +72,9 @@ class EventCalendarWidget : FrameLayout {
             }
             // invoke listener for those interested
             daySelectionListener?.let { listener ->
-                val selectionCalendar = currentCalendar.clone() as GregorianCalendar
-                selectionCalendar.set(Calendar.DAY_OF_MONTH, dayWidget.getDayOfMonth())
-                val dayOfYear = formatDayOfYear(selectionCalendar.time)
-                listener.invoke(dayOfYear)
+                dayWidget.eventData?.let { deadline ->
+                    listener.invoke(deadline)
+                }
             }
         }
     }
@@ -179,10 +178,10 @@ class EventCalendarWidget : FrameLayout {
     /**
      * Add a list of deadlines as String to the calendar
      *
-     * Params: datea - a list of date as String with format: yyyy/MM/dd
+     * Params: dates - a list of date as String with format: yyyy/MM/dd
      */
-    fun addAllDeadlines(dates: List<String>) {
-        dates.forEach(::addDeadline)
+    fun addAllDeadlines(deadlines: List<DeadlineModel>) {
+        deadlines.forEach(::addDeadline)
     }
 
     /**
@@ -190,8 +189,8 @@ class EventCalendarWidget : FrameLayout {
      *
      * Params: date - a date string with format: yyyy/MM/dd
      */
-    fun addDeadline(date: String) {
-        parseDayOfYear(date)?.let { dayOfYear ->
+    fun addDeadline(deadline: DeadlineModel) {
+        parseDayOfYear(deadline.date)?.let { dayOfYear ->
             val eventCalendar = todayCalendar.clone() as GregorianCalendar
             eventCalendar.time = dayOfYear
             if (
@@ -200,13 +199,13 @@ class EventCalendarWidget : FrameLayout {
             ) {
                 val eventDay = eventCalendar.get(Calendar.DAY_OF_MONTH)
                 dayWidgets[getIndexOf(eventDay)].let { dayWidget ->
+                    dayWidget.eventData = deadline
                     dayWidget.dayWithEvent = true
-                    if (dayWidget.today){
+                    if (dayWidget.today) {
                         daySelectionListener?.let { listener ->
-                            val selectionCalendar = currentCalendar.clone() as GregorianCalendar
-                            selectionCalendar.set(Calendar.DAY_OF_MONTH, dayWidget.getDayOfMonth())
-                            val today = formatDayOfYear(selectionCalendar.time)
-                            listener.invoke(today)
+                            dayWidget.eventData?.let { deadline ->
+                                listener.invoke(deadline)
+                            }
                         }
                     }
                 }
@@ -214,7 +213,7 @@ class EventCalendarWidget : FrameLayout {
         }
     }
 
-    fun onDaySelection(listener: (String) -> Unit) {
+    fun setDaySelectionListener(listener: (DeadlineModel) -> Unit) {
         daySelectionListener = listener
     }
 
