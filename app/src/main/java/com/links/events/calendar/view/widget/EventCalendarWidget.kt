@@ -8,6 +8,7 @@ import com.links.events.calendar.R
 import com.links.events.calendar.tools.DateUtils
 import com.links.events.calendar.tools.DateUtils.Companion.formatDayOfYear
 import com.links.events.calendar.tools.DateUtils.Companion.parseDayOfYear
+import com.links.events.calendar.tools.SafeClickListener
 import com.links.events.calendar.tools.capitalize
 import com.links.events.calendar.view.widget.DayEventCalendarWidget.DateType.WITHOUT_EVENT
 import kotlinx.android.synthetic.main.widget_event_calendar.view.*
@@ -57,7 +58,7 @@ class EventCalendarWidget : FrameLayout {
         leftArrowImage.setOnClickListener { prevMonth() }
         rightArrowImage.setOnClickListener { nextMonth() }
         dayWidgets.forEach { dayWidget ->
-            dayWidget.setOnClickListener { onNewSelection(dayWidget) }
+            dayWidget.setOnClickListener(SafeClickListener { onNewSelection(dayWidget) })
         }
     }
 
@@ -65,8 +66,10 @@ class EventCalendarWidget : FrameLayout {
         if (dayWidget.dayOfMonth) {
             // execute selection and store new selection state
             dayWidget.daySelected = true
-            dayWidgetSelected?.daySelected = false
-            dayWidgetSelected = dayWidget
+            if(dayWidget != dayWidgetSelected) {
+                dayWidgetSelected?.daySelected = false
+                dayWidgetSelected = dayWidget
+            }
             // invoke listener for those interested
             daySelectionListener?.let { listener ->
                 val selectionCalendar = currentCalendar.clone() as GregorianCalendar
@@ -125,6 +128,10 @@ class EventCalendarWidget : FrameLayout {
     }
 
     private fun getIndexOf(day: Int): Int {
+        return day + firstDayOfMonthOffset - 1
+    }
+
+    private fun getIndexOf2(day: Int): Int {
         val rowIndex = getRowOf(day)
         val columnIndex = getColumnOf(day)
         return rowIndex * 7 + columnIndex
@@ -170,6 +177,15 @@ class EventCalendarWidget : FrameLayout {
     }
 
     /**
+     * Add a list of deadlines as String to the calendar
+     *
+     * Params: datea - a list of date as String with format: yyyy/MM/dd
+     */
+    fun addAllDeadlines(dates: List<String>) {
+        dates.forEach(::addDeadline)
+    }
+
+    /**
      * Add just one deadline as String to the calendar
      *
      * Params: date - a date string with format: yyyy/MM/dd
@@ -183,20 +199,9 @@ class EventCalendarWidget : FrameLayout {
                 && currentCalendar.get(Calendar.MONTH) == eventCalendar.get(Calendar.MONTH)
             ) {
                 val eventDay = eventCalendar.get(Calendar.DAY_OF_MONTH)
-                dayWidgets[getIndexOf(eventDay)].let { dayWidget ->
-                    dayWidget.dayWithEvent = true
-                }
+                dayWidgets[getIndexOf(eventDay)].dayWithEvent = true
             }
         }
-    }
-
-    /**
-     * Add a list of deadlines as String to the calendar
-     *
-     * Params: datea - a list of date as String with format: yyyy/MM/dd
-     */
-    fun addAllDeadlines(dates: List<String>) {
-        dates.forEach(::addDeadline)
     }
 
     fun onDaySelection(listener: (String) -> Unit) {

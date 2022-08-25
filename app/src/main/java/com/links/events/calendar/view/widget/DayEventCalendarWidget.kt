@@ -59,7 +59,11 @@ class DayEventCalendarWidget : FrameLayout {
                         CircleType.EMPTY_CIRCLE
                     }
                 } else {
-                    CircleType.NONE
+                    if (dayWithEvent) {
+                        CircleType.CIRCLE
+                    } else {
+                        CircleType.NONE
+                    }
                 }
             )
         }
@@ -70,18 +74,34 @@ class DayEventCalendarWidget : FrameLayout {
             _dayWithEvent = value
             showCircle(
                 if (value) {
-                    CircleType.CIRCLE
+                    if (daySelected) {
+                        CircleType.DOUBLE_CIRCLE
+                    } else {
+                        CircleType.CIRCLE
+                    }
                 } else {
-                    CircleType.NONE
+                    if (daySelected) {
+                        CircleType.EMPTY_CIRCLE
+                    } else {
+                        CircleType.NONE
+                    }
                 }
             )
         }
+
+    fun resetState() {
+        today = false
+        dayWithEvent = false
+        daySelected = false
+        dayOfMonth = false
+    }
 
     fun getDayOfMonth(): Int {
         return dateText.text.toString().toInt()
     }
 
     fun setDate(day: String? = null, type: DateType = DateType.NOT_IN_MONTH, activeDay: Boolean = false) {
+        resetState()
         dateText.text = day
         if (day.isNullOrEmpty()) {
             showCircle(CircleType.NONE)
