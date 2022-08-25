@@ -38,6 +38,7 @@ class DayEventCalendarWidget : FrameLayout {
             dayOfMonth = true
             today = true
             daySelected = true
+            dayWithEvent = true
         }
     }
 
