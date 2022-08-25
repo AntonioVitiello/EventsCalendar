@@ -14,5 +14,6 @@
     <color name="gray">#ABABAB</color>
     <color name="red_light">#FF6C76</color>
     <color name="red_20">#33E8404B</color>
+    <color name="progress_bg_50">#8043446D</color>
 
 </resources>

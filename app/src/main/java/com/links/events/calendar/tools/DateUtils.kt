@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 /**
- * Created by Antonio Vitiello on 30/01/2021.
+ * Created by Antonio Vitiello
  */
 @SuppressLint("ConstantLocale")
 class DateUtils {
@@ -37,7 +37,7 @@ class DateUtils {
         }
 
         //"yyyy/MM/dd" eg: 2022/08/24
-        fun formatDayOfYear(dayOfYear: Date): String {
+        fun formatDayOfYear(dayOfYear: Date = Date()): String {
             return formatDate(dayOfYearFormat, dayOfYear)
         }
 

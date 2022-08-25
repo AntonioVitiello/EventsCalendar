@@ -2,16 +2,21 @@
 
 package com.links.events.calendar.tools
 
+import android.content.Context
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.util.Log
+import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import io.reactivex.Single
+import java.lang.ref.WeakReference
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
 
 
 /**
- * Created by Antonio Vitiello on 25/01/2021.
+ * Created by Antonio Vitiello
  */
 fun Date.format(dateFormat: SimpleDateFormat): String {
     return dateFormat.format(this)
@@ -68,3 +73,27 @@ fun String.capitalize(): String {
         }
     }
 }
+
+fun FragmentActivity.closeKeyboard() {
+    val viewFocus = currentFocus ?: return
+    val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    inputMethodManager.hideSoftInputFromWindow(viewFocus.applicationWindowToken, 0)
+}
+
+fun <T> Single<T>.manageProgress(weakActivity: WeakReference<FragmentActivity>): Single<T> {
+    return compose { upstream ->
+        upstream.doOnSubscribe {
+            Utils.showLoading(weakActivity)
+        }
+            .doOnDispose {
+                Utils.hideLoading(weakActivity)
+            }
+            .doOnError {
+                Utils.hideLoading(weakActivity)
+            }
+            .doOnSuccess {
+                Utils.hideLoading(weakActivity)
+            }
+    }
+}
+

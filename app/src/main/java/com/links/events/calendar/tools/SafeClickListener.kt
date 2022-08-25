@@ -4,7 +4,7 @@ import android.os.SystemClock
 import android.view.View
 
 /**
- * Created by Antonio Vitiello on 20/05/2021.
+ * Created by Antonio Vitiello
  */
 class SafeClickListener(
     private var defaultInterval: Int = DEFAULT_SAFE_INTERVAL_MILLIS,
