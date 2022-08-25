@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.links.events.calendar.R
 import com.links.events.calendar.data.source.getDeadlineByDate
+import com.links.events.calendar.data.source.getDeadlinesByDate
 import com.links.events.calendar.data.source.getMonthDeadlines
 import com.links.events.calendar.model.DeadlineModel
 import kotlinx.android.synthetic.main.fragment_main.*
@@ -29,7 +30,12 @@ class MainFragment : Fragment() {
         closeImage.setOnClickListener { requireActivity().finish() }
         calendarWidget.setDaySelectionListener { deadline: DeadlineModel ->
             //TODO:AV 24/08/2022 invoke event widget
-            Toast.makeText(context, "Get deadline info: ${deadline.date}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Day selected: ${deadline.date}", Toast.LENGTH_SHORT).show()
+        }
+        calendarWidget.setMonthChangeListener { data: String ->
+            //TODO:AV 24/08/2022 invoke event widget
+            Toast.makeText(context, "Month changed: $data", Toast.LENGTH_SHORT).show()
+            calendarWidget.addAllDeadlines(getDeadlinesByDate(data))
         }
     }
 

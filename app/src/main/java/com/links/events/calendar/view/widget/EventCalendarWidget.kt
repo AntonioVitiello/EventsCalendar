@@ -24,6 +24,7 @@ class EventCalendarWidget : FrameLayout {
     private var firstDayOfMonthOffset = 0
     private var dayWidgetSelected: DayEventCalendarWidget? = null
     private var daySelectionListener: ((DeadlineModel) -> Unit)? = null
+    private var monthChangeListener: ((String) -> Unit)? = null
 
 
     constructor(context: Context) : this(context, null)
@@ -168,11 +169,13 @@ class EventCalendarWidget : FrameLayout {
     private fun prevMonth() {
         currentCalendar.add(Calendar.MONTH, -1)
         renderCalendar()
+        monthChangeListener?.invoke(DateUtils.formatDayOfYear(currentCalendar.time))
     }
 
     private fun nextMonth() {
         currentCalendar.add(Calendar.MONTH, 1)
         renderCalendar()
+        monthChangeListener?.invoke(DateUtils.formatDayOfYear(currentCalendar.time))
     }
 
     /**
@@ -215,6 +218,10 @@ class EventCalendarWidget : FrameLayout {
 
     fun setDaySelectionListener(listener: (DeadlineModel) -> Unit) {
         daySelectionListener = listener
+    }
+
+    fun setMonthChangeListener(listener: (String) -> Unit) {
+        monthChangeListener = listener
     }
 
 }

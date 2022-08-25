@@ -95,11 +95,12 @@ class DayEventCalendarWidget : FrameLayout {
             )
         }
 
-    fun resetState() {
+    private fun resetState() {
         today = false
         dayWithEvent = false
         daySelected = false
         dayOfMonth = false
+        eventData = null
     }
 
     fun getDayOfMonth(): Int {
