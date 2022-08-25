@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingVertical="4dp"
+    tools:background="@color/black_background">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/calendarImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_calendario" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/dateText"
+        style="@style/gray_bold_16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@id/calendarImage"
+        app:layout_constraintStart_toEndOf="@id/calendarImage"
+        app:layout_constraintTop_toTopOf="@id/calendarImage"
+        tools:text="19 Giugno" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/titleText"
+        style="@style/gray_medium_12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/no_deadlines_for_today"
+        app:layout_constraintStart_toStartOf="@id/calendarImage"
+        app:layout_constraintTop_toBottomOf="@id/calendarImage" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/eventsRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="11dp"
+        android:layout_marginTop="14dp"
+        android:visibility="gone"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintTop_toBottomOf="@id/titleText"
+        tools:itemCount="3"
+        tools:listitem="@layout/item_blackboard_calendar" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

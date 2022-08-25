@@ -7,22 +7,22 @@ import android.widget.FrameLayout
 import com.links.events.calendar.R
 import com.links.events.calendar.model.DeadlineModel
 import com.links.events.calendar.tools.DateUtils
-import com.links.events.calendar.tools.DateUtils.Companion.parseDayOfYear
+import com.links.events.calendar.tools.DateUtils.Companion.parseDayOfYearOrNull
 import com.links.events.calendar.tools.SafeClickListener
 import com.links.events.calendar.tools.capitalize
-import com.links.events.calendar.view.widget.DayEventCalendarWidget.DateType.WITHOUT_EVENT
+import com.links.events.calendar.view.widget.DeadlineDayWidget.DateType.WITHOUT_EVENT
 import kotlinx.android.synthetic.main.widget_event_calendar.view.*
 import java.util.*
 
 /**
  * Created by Antonio Vitiello
  */
-class EventCalendarWidget : FrameLayout {
+class DeadlinesCalendarWidget : FrameLayout {
     private val todayCalendar = DateUtils.todayCalendar() //do not change date, clone instead!
     private var currentCalendar = todayCalendar.clone() as GregorianCalendar
-    private lateinit var dayWidgets: List<DayEventCalendarWidget>
+    private lateinit var dayWidgets: List<DeadlineDayWidget>
     private var firstDayOfMonthOffset = 0
-    private var dayWidgetSelected: DayEventCalendarWidget? = null
+    private var dayWidgetSelected: DeadlineDayWidget? = null
     private var daySelectionListener: ((DeadlineModel) -> Unit)? = null
     private var monthChangeListener: ((String) -> Unit)? = null
 
@@ -63,7 +63,7 @@ class EventCalendarWidget : FrameLayout {
         }
     }
 
-    private fun onNewSelection(dayWidget: DayEventCalendarWidget) {
+    private fun onNewSelection(dayWidget: DeadlineDayWidget) {
         if (dayWidget.dayOfMonth) {
             // execute selection and store new selection state
             dayWidget.daySelected = true
@@ -193,7 +193,7 @@ class EventCalendarWidget : FrameLayout {
      * Params: date - a date string with format: yyyy/MM/dd
      */
     fun addDeadline(deadline: DeadlineModel) {
-        parseDayOfYear(deadline.date)?.let { dayOfYear ->
+        parseDayOfYearOrNull(deadline.date)?.let { dayOfYear ->
             val eventCalendar = todayCalendar.clone() as GregorianCalendar
             eventCalendar.time = dayOfYear
             if (
@@ -205,6 +205,7 @@ class EventCalendarWidget : FrameLayout {
                     dayWidget.eventData = deadline
                     dayWidget.dayWithEvent = true
                     if (dayWidget.today) {
+                        // invoke listener for those interested
                         daySelectionListener?.let { listener ->
                             dayWidget.eventData?.let { deadline ->
                                 listener.invoke(deadline)

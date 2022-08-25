@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.links.events.calendar.R
@@ -43,13 +42,16 @@ class MainFragment : Fragment() {
 
     private fun initComponents() {
         closeImage.setOnClickListener { requireActivity().finish() }
+        blackboardWidget.setDeadlines(DeadlineModel(DateUtils.formatDayOfYear()))
+
+        // On day selection fill calendar events blackboard
         calendarWidget.setDaySelectionListener { deadline: DeadlineModel ->
-            //TODO:AV 24/08/2022 invoke event widget
-            Toast.makeText(context, "Day selected: ${deadline.date}", Toast.LENGTH_SHORT).show()
+            blackboardWidget.setDeadlines(deadline)
         }
+
+        // On month change load new deadlines
         calendarWidget.setMonthChangeListener { data: String ->
             viewModel.loadDeadLinesByDate(WeakReference(activity), data)
-//            calendarWidget.addAllDeadlines(getDeadlinesByDate(data))
         }
     }
 

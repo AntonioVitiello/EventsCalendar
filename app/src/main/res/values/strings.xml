@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name" translatable="false">EventsCalendar</string>
     <string name="event_calendar_title" translatable="false">Calendario eventi del mese</string>
+    <string name="deadlines_for_today">Scadenze fiscali da ricordare oggi:</string>
+    <string name="deadlines_for_selected_day">Scadenze fiscali da ricordare per il giorno selezionato:</string>
+    <string name="no_deadlines_for_today">Non ci sono scadenze per oggi</string>
+    <string name="no_deadlines_for_selected_day">Non ci sono scadenze per la data selezionata</string>
 </resources>

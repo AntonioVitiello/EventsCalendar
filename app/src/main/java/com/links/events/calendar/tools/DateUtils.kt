@@ -27,8 +27,13 @@ class DateUtils {
         }
 
         //"MMMM yyyy" eg: Agosto 2022
-        fun formatMonthYear(monthYearDate: Date = Date()): String {
-            return formatDate(monthYearDateFormat, monthYearDate).capitalize()
+        fun formatMonthYear(monthYearDate: Date = Date(), capitalize: Boolean = true): String {
+            val date = formatDate(monthYearDateFormat, monthYearDate)
+            return if (capitalize) {
+                date.capitalize()
+            } else {
+                date
+            }
         }
 
         //"MMMM yyyy" eg: Agosto 2022
@@ -42,7 +47,7 @@ class DateUtils {
         }
 
         //"yyyy/MM/dd" eg: 2022/08/24
-        fun parseDayOfYear(dayOfYear: String): Date? {
+        fun parseDayOfYearOrNull(dayOfYear: String): Date? {
             return parseDateOrNull(dayOfYearFormat, dayOfYear)
         }
 

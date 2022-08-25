@@ -32,19 +32,19 @@ private val descriptions = listOf(
 fun getMonthDeadlines(): List<DeadlineModel> {
     return listOf(
         DeadlineModel(
-            "2022/08/7", listOf("1 ${descriptions.random()}", "2 ${descriptions.random()}", "3 ${descriptions.random()}")
+            "2022/08/7", listOf(descriptions.random(), descriptions.random(), descriptions.random())
         ),
         DeadlineModel(
-            "2022/08/8", listOf("1 ${descriptions.random()}", "2 ${descriptions.random()}", "3 ${descriptions.random()}")
+            "2022/08/8", listOf(descriptions.random(), descriptions.random(), descriptions.random())
         ),
         DeadlineModel(
-            "2022/08/16", listOf("1 ${descriptions.random()}", "2 ${descriptions.random()}", "3 ${descriptions.random()}")
+            "2022/08/16", listOf(descriptions.random(), descriptions.random(), descriptions.random())
         ),
         DeadlineModel(
-            "2022/08/25", listOf("1 ${descriptions.random()}", "2 ${descriptions.random()}", "3 ${descriptions.random()}")
+            "2022/08/25", listOf(descriptions.random(), descriptions.random(), descriptions.random())
         ),
         DeadlineModel(
-            "2022/08/28", listOf("1 ${descriptions.random()}", "2 ${descriptions.random()}", "3 ${descriptions.random()}")
+            "2022/08/28", listOf(descriptions.random(), descriptions.random(), descriptions.random())
         )
     )
 }
@@ -53,8 +53,8 @@ fun getDeadlineByDate(date: String): DeadlineModel {
     return DeadlineModel(
         date, listOf(
             "1 ${descriptions.random()}",
-            "2 ${descriptions.random()}",
-            "3 ${descriptions.random()}"
+            descriptions.random(),
+            descriptions.random()
         )
     )
 }
@@ -66,23 +66,23 @@ fun getDeadlinesByDate(data: String): List<DeadlineModel> {
     return listOf(
         DeadlineModel(
             "$year/$month/${(1..31).random()}",
-            listOf("1 ${descriptions.random()}", "2 ${descriptions.random()}", "3 ${descriptions.random()}")
+            listOf(descriptions.random(), descriptions.random(), descriptions.random())
         ),
         DeadlineModel(
             "$year/$month/${(1..31).random()}",
-            listOf("1 ${descriptions.random()}", "2 ${descriptions.random()}", "3 ${descriptions.random()}")
+            listOf(descriptions.random(), descriptions.random(), descriptions.random())
         ),
         DeadlineModel(
             "$year/$month/${(1..31).random()}",
-            listOf("1 ${descriptions.random()}", "2 ${descriptions.random()}", "3 ${descriptions.random()}")
+            listOf(descriptions.random(), descriptions.random(), descriptions.random())
         ),
         DeadlineModel(
             "$year/$month/${(1..31).random()}",
-            listOf("1 ${descriptions.random()}", "2 ${descriptions.random()}", "3 ${descriptions.random()}")
+            listOf(descriptions.random(), descriptions.random(), descriptions.random())
         ),
         DeadlineModel(
             "$year/$month/${(1..31).random()}",
-            listOf("1 ${descriptions.random()}", "2 ${descriptions.random()}", "3 ${descriptions.random()}")
+            listOf(descriptions.random(), descriptions.random(), descriptions.random())
         )
     )
 }

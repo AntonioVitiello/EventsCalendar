@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:background="@color/black_background">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/counterText"
+        style="@style/white_bold_14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="12" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/descriptionText"
+        style="@style/white_medium_16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:ellipsize="end"
+        android:lineSpacingExtra="6dp"
+        android:maxLines="4"
+        app:layout_constraintStart_toStartOf="@id/calendarImage"
+        app:layout_constraintTop_toBottomOf="@id/calendarImage"
+        tools:text="SCADENZA A" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>

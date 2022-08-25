@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.widget_day_event_calendar.view.*
 /**
  * Created by Antonio Vitiello
  */
-class DayEventCalendarWidget : FrameLayout {
+class DeadlineDayWidget : FrameLayout {
     private var _today = false
     private var _dayWithEvent = false
     private var _daySelected = false
