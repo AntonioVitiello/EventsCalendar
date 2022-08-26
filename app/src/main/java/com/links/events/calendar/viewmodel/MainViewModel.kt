@@ -13,7 +13,7 @@ import io.reactivex.schedulers.Schedulers
 import java.lang.ref.WeakReference
 
 /**
- * Created by Antonio Vitiello on 25/08/2022.
+ * Created by Antonio Vitiello
  */
 class MainViewModel(application: Application) : AndroidViewModel(application) {
     private val disposable = CompositeDisposable()

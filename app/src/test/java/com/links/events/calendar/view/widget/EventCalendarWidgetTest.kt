@@ -1,7 +1,6 @@
 package com.links.events.calendar.view.widget
 
 import com.links.events.calendar.tools.DateUtils
-import com.links.events.calendar.tools.capitalize
 import org.junit.Test
 import java.text.DateFormat
 import java.text.DateFormat.FULL
@@ -9,7 +8,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 /**
- * Created by Antonio Vitiello on 23/08/2022.
+ * Created by Antonio Vitiello
  */
 class EventCalendarWidgetTest {
     @Test

@@ -3,7 +3,7 @@ package com.links.events.calendar.data.source
 import com.links.events.calendar.model.DeadlineModel
 
 /**
- * Created by Antonio Vitiello on 25/08/2022.
+ * Created by Antonio Vitiello
  */
 private val descriptions = listOf(
     "SCADENZA A",
@@ -29,6 +29,16 @@ private val descriptions = listOf(
     "SCADENZA Z"
 )
 
+private val reminders = listOf(
+    "Lorem ipsum dolor sit amet, ",
+    "consectetur adipiscing elit.",
+    "Quisque eget purus a odio rhoncus pulvinar commodo sit amet nulla.",
+    "Ut euismod rhoncus erat at egestas.",
+    "Sed vulputate eleifend turpis id pulvinar.",
+    "Ut a hendrerit lectus.",
+    "Ut condimentum vel eros vitae placerat."
+)
+
 fun getDeadlinesByDate(data: String): List<DeadlineModel> {
     val split = data.split("/")
     val year = split[0]
@@ -36,23 +46,28 @@ fun getDeadlinesByDate(data: String): List<DeadlineModel> {
     return listOf(
         DeadlineModel(
             "$year/$month/${(1..31).random()}",
-            listOf(descriptions.random(), descriptions.random(), descriptions.random())
+            listOf(descriptions.random(), descriptions.random(), descriptions.random()),
+            reminders.random()
         ),
         DeadlineModel(
             "$year/$month/${(1..31).random()}",
-            listOf(descriptions.random(), descriptions.random(), descriptions.random())
+            listOf(descriptions.random(), descriptions.random(), descriptions.random()),
+            reminders.random()
         ),
         DeadlineModel(
             "$year/$month/${(1..31).random()}",
-            listOf(descriptions.random(), descriptions.random(), descriptions.random())
+            listOf(descriptions.random(), descriptions.random(), descriptions.random()),
+            reminders.random()
         ),
         DeadlineModel(
             "$year/$month/${(1..31).random()}",
-            listOf(descriptions.random(), descriptions.random(), descriptions.random())
+            listOf(descriptions.random(), descriptions.random(), descriptions.random()),
+            reminders.random()
         ),
         DeadlineModel(
             "$year/$month/${(1..31).random()}",
-            listOf(descriptions.random(), descriptions.random(), descriptions.random())
+            listOf(descriptions.random(), descriptions.random(), descriptions.random()),
+            reminders.random()
         )
     )
 }
@@ -60,29 +75,31 @@ fun getDeadlinesByDate(data: String): List<DeadlineModel> {
 fun getMonthDeadlines(): List<DeadlineModel> {
     return listOf(
         DeadlineModel(
-            "2022/08/7", listOf(descriptions.random(), descriptions.random(), descriptions.random())
+            "2022/08/7", listOf(descriptions.random(), descriptions.random(), descriptions.random()), reminders.random()
         ),
         DeadlineModel(
-            "2022/08/8", listOf(descriptions.random(), descriptions.random(), descriptions.random())
+            "2022/08/8", listOf(descriptions.random(), descriptions.random(), descriptions.random()), reminders.random()
         ),
         DeadlineModel(
-            "2022/08/16", listOf(descriptions.random(), descriptions.random(), descriptions.random())
+            "2022/08/16", listOf(descriptions.random(), descriptions.random(), descriptions.random()), reminders.random()
         ),
         DeadlineModel(
-            "2022/08/26", listOf(descriptions.random(), descriptions.random(), descriptions.random())
+            "2022/08/26", listOf(descriptions.random(), descriptions.random(), descriptions.random()), reminders.random()
         ),
         DeadlineModel(
-            "2022/08/28", listOf(descriptions.random(), descriptions.random(), descriptions.random())
+            "2022/08/28", listOf(descriptions.random(), descriptions.random(), descriptions.random()), reminders.random()
         )
     )
 }
 
 fun getDeadlineByDate(date: String): DeadlineModel {
     return DeadlineModel(
-        date, listOf(
-            "1 ${descriptions.random()}",
+        date,
+        listOf(
+            descriptions.random(),
             descriptions.random(),
             descriptions.random()
-        )
+        ),
+        reminders.random()
     )
 }

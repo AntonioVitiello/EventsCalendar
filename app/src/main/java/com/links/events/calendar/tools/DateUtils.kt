@@ -15,6 +15,7 @@ class DateUtils {
         val dayOfWeekFormat by lazy(LazyThreadSafetyMode.NONE) { SimpleDateFormat("EEE", Locale.ITALY) }
         val dayOfYearFormat by lazy(LazyThreadSafetyMode.NONE) { SimpleDateFormat("yyyy/MM/dd", Locale.ITALY) }
         val dayMonthFormat by lazy(LazyThreadSafetyMode.NONE) { SimpleDateFormat("dd MMMM", Locale.ITALY) }
+        val dayOfYearWithMonthNameFormat by lazy(LazyThreadSafetyMode.NONE) { SimpleDateFormat("dd MMMM yyyy", Locale.ITALY) }
         val itDateFormat by lazy(LazyThreadSafetyMode.NONE) { SimpleDateFormat("EEEE dd MMMM yyyy", Locale.ITALY) }
         val iso8601DateFormat by lazy(LazyThreadSafetyMode.NONE) { SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.ITALY) }
 
@@ -60,6 +61,16 @@ class DateUtils {
         //"yyyy/MM/dd" eg: 2022/08/24
         fun parseDayOfYearOrNull(dayOfYear: String): Date? {
             return parseDateOrNull(dayOfYearFormat, dayOfYear)
+        }
+
+        //"dd MMMM yyyy" eg: 24 Agosto 2022
+        fun formatDayOfYearWithMonthName(dayOfYear: Date = Date()): String {
+            return formatDate(dayOfYearWithMonthNameFormat, dayOfYear).capitalize()
+        }
+
+        //"dd MMMM yyyy" eg: 24 Agosto 2022
+        fun parseDayOfYearWithMonthName(dayOfYear: String): Date? {
+            return parseDateOrNull(dayOfYearWithMonthNameFormat, dayOfYear)
         }
 
         //"yyyy-MM-dd'T'HH:mm:ss'Z'"

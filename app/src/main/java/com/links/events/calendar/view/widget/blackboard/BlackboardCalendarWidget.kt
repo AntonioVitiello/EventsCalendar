@@ -1,4 +1,4 @@
-package com.links.events.calendar.view.widget
+package com.links.events.calendar.view.widget.blackboard
 
 import android.content.Context
 import android.util.AttributeSet
@@ -8,14 +8,13 @@ import androidx.core.view.isVisible
 import com.links.events.calendar.R
 import com.links.events.calendar.model.DeadlineModel
 import com.links.events.calendar.tools.DateUtils
-import com.links.events.calendar.view.widget.adapter.BlackboardCalendarAdapter
 import kotlinx.android.synthetic.main.widget_blackboard_calendar.view.*
 
 /**
  * Created by Antonio Vitiello
  */
 class BlackboardCalendarWidget : FrameLayout {
-    private lateinit var adapter: BlackboardCalendarAdapter
+    private var adapter = BlackboardCalendarAdapter()
 
     constructor(context: Context) : this(context, null)
     constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
@@ -25,7 +24,6 @@ class BlackboardCalendarWidget : FrameLayout {
     }
 
     private fun initView() {
-        adapter = BlackboardCalendarAdapter(context)
         eventsRecycler.adapter = adapter
         dateText.text = DateUtils.formatDayMonth()
     }

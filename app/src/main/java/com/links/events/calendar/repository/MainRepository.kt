@@ -6,7 +6,7 @@ import io.reactivex.Single
 import java.util.concurrent.TimeUnit
 
 /**
- * Created by Antonio Vitiello on 25/08/2022.
+ * Created by Antonio Vitiello
  */
 class MainRepository {
 

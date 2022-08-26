@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.links.events.calendar.R
@@ -58,6 +59,10 @@ class MainFragment : Fragment() {
     private fun fillData(event: SingleEvent<List<DeadlineModel>>) {
         event.getContentIfNotHandled()?.let { deadlines ->
             calendarWidget.addAllDeadlines(deadlines)
+
+            //TODO:AV 26/08/2022 CLEANME spostare e nascondere anche header con icona
+            carouselWidget.switchData(deadlines)
+            carouselWidget.isVisible = true
         }
     }
 
