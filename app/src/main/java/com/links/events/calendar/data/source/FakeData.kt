@@ -35,23 +35,23 @@ fun getDeadlinesByDate(data: String): List<DeadlineModel> {
     val month = split[1]
     return listOf(
         DeadlineModel(
-            "$year/$month/${(1..24).random()}",
+            "$year/$month/${(1..31).random()}",
             listOf(descriptions.random(), descriptions.random(), descriptions.random())
         ),
         DeadlineModel(
-            "$year/$month/${(1..24).random()}",
+            "$year/$month/${(1..31).random()}",
             listOf(descriptions.random(), descriptions.random(), descriptions.random())
         ),
         DeadlineModel(
-            "$year/$month/${(1..24).random()}",
+            "$year/$month/${(1..31).random()}",
             listOf(descriptions.random(), descriptions.random(), descriptions.random())
         ),
         DeadlineModel(
-            "$year/$month/${(1..24).random()}",
+            "$year/$month/${(1..31).random()}",
             listOf(descriptions.random(), descriptions.random(), descriptions.random())
         ),
         DeadlineModel(
-            "$year/$month/${(1..24).random()}",
+            "$year/$month/${(1..31).random()}",
             listOf(descriptions.random(), descriptions.random(), descriptions.random())
         )
     )

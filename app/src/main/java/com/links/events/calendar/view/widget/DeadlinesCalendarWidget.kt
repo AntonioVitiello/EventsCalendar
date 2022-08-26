@@ -135,11 +135,6 @@ class DeadlinesCalendarWidget : FrameLayout {
             dayWidgets[getIndexOf(today)].let { dayWidget ->
                 dayWidget.today = true
                 dayWidgetSelected = dayWidget
-                // TODO:AV 25/08/2022 daySelectionListener is null here!!! AAA
-                daySelectionListener?.let { listener ->
-                    val date = formatDayOfYear(todayCalendar.time)
-                    listener.invoke(DeadlineModel(date))
-                }
             }
         }
     }

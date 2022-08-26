@@ -27,6 +27,7 @@ class BlackboardCalendarWidget : FrameLayout {
     private fun initView() {
         adapter = BlackboardCalendarAdapter(context)
         eventsRecycler.adapter = adapter
+        dateText.text = DateUtils.formatDayMonth()
     }
 
     fun setDeadlines(deadlines: DeadlineModel) {

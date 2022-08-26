@@ -42,12 +42,12 @@ class DateUtils {
             return parseDateOrNull(monthYearDateFormat, monthYear)
         }
 
-        //"dd MMMM" eg: 19 Agosto
+        //"dd MMMM" eg: 19 agosto
         fun formatDayMonth(dayMonthDate: Date = Date()): String {
             return formatDate(dayMonthFormat, dayMonthDate)
         }
 
-        //"dd MMMM" eg: 19 Agosto
+        //"dd MMMM" eg: 19 agosto
         fun parseDayMonth(dayMonth: String): Date? {
             return parseDateOrNull(dayMonthFormat, dayMonth)
         }
