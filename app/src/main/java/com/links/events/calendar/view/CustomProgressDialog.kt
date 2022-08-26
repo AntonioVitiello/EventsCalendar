@@ -23,14 +23,12 @@ class CustomProgressDialog : DialogFragment() {
 
         fun newInstance() = CustomProgressDialog()
 
-        @JvmStatic
         fun show(activity: FragmentActivity) = synchronized(activity) {
             retrieveDialogFragment(activity)?.dismissAllowingStateLoss()
             newInstance().show(activity.supportFragmentManager, TAG)
             showingLoading = true
         }
 
-        @JvmStatic
         fun dismiss(activity: FragmentActivity) = synchronized(activity) {
             showingLoading = false
             retrieveDialogFragment(activity)?.dismissAllowingStateLoss()
@@ -61,6 +59,7 @@ class CustomProgressDialog : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        sxcProgress.speed = 2.5f
         view.isClickable = true
         view.isFocusable = true
     }

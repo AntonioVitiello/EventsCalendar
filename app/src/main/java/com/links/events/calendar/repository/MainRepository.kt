@@ -13,7 +13,7 @@ class MainRepository {
     fun loadDeadLinesByDate(data: String): Single<List<DeadlineModel>> {
         return Single.fromCallable {
             getDeadlinesByDate(data)
-        }.delay(1100, TimeUnit.MILLISECONDS)
+        }.delay(1300, TimeUnit.MILLISECONDS)
     }
 
 }

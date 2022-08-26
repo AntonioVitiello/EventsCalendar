@@ -19,7 +19,6 @@ class DateUtils {
         val itDateFormat by lazy(LazyThreadSafetyMode.NONE) { SimpleDateFormat("EEEE dd MMMM yyyy", Locale.ITALY) }
         val iso8601DateFormat by lazy(LazyThreadSafetyMode.NONE) { SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.ITALY) }
 
-        @JvmStatic
         fun formatDate(dateFormat: SimpleDateFormat, date: Date): String {
             return date.format(dateFormat)
         }
