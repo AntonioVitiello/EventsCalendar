@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -33,10 +34,6 @@ class MainFragment : Fragment() {
         viewModel.deadlinesLiveData.observe(viewLifecycleOwner, ::fillData)
 
         initComponents()
-
-//         just for testing
-//        testAddDeadline()
-//        testAddDeadlines()
     }
 
     private fun initComponents() {
@@ -54,6 +51,11 @@ class MainFragment : Fragment() {
         calendarWidget.setMonthChangeListener { date: String ->
             viewModel.loadDeadLinesByDate(WeakReference(activity), date)
             blackboardWidget.clean(date)
+        }
+
+        // On click carousel info (i)
+        carouselWidget.setOnInfoClickListener {
+            CustomAlertDialog.newInstance().show(parentFragmentManager, CustomAlertDialog.TAG)
         }
     }
 

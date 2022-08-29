@@ -36,6 +36,12 @@
         <item name="android:textSize">16dp</item>
     </style>
 
+    <style name="info_dialog_button">
+        <item name="android:textSize">18dp</item>
+        <item name="android:textColor">@color/info_dialog_button_label_color</item>
+        <item name="android:backgroundTint">@color/info_dialog_button_backg_color</item>
+    </style>
+
     <style name="FullScreenDialogTheme">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowIsFloating">false</item>
@@ -44,6 +50,7 @@
     </style>
 
     <style name="ProgressDialogTheme" parent="FullScreenDialogTheme">
+        <item name="android:windowFullscreen">false</item>
         <item name="android:windowBackground">@color/progress_bg_50</item>
     </style>
 

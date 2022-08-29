@@ -21,4 +21,7 @@
     <color name="circle_pager_indicator_active_color">#192d6e</color>
     <color name="circle_pager_indicator_inactive_color">#d4d4d4</color>
 
+    <color name="info_dialog_button_backg_color">#4D679EFB</color>
+    <color name="info_dialog_button_label_color">#C8DCFD</color>
+
 </resources>

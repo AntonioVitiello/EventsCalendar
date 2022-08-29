@@ -6,4 +6,8 @@
     <string name="no_deadlines_for_today">Non ci sono scadenze per oggi</string>
     <string name="no_deadlines_for_selected_day">Non ci sono scadenze per la data selezionata</string>
     <string name="no_selected_day">Nessuna data selezionata</string>
+    <string name="carousel_title">Reminder prossimi eventi</string>
+    <string name="info_dialog_title">Reminder prossimi eventi</string>
+    <string name="info_dialog_message">Questa sezione riporta solo i prossimi tre eventi, per vedere quelli meno vicini scorri sul calendario e clicca sugli eventi salvati per visualizzare maggiori dettagli.</string>
+    <string name="info_dialog_button">Ho capito</string>
 </resources>

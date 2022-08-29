@@ -18,6 +18,7 @@ class EventCaorouselWidget : LinearLayoutCompat {
     private lateinit var adapter: EventCaorouselAdapter
     private lateinit var layoutManager: LinearLayoutManager
     private var selectedItemPosition = 0
+    private var infoListener: (() -> Unit)? = null
 
     constructor(context: Context) : this(context, null)
     constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
@@ -36,8 +37,14 @@ class EventCaorouselWidget : LinearLayoutCompat {
         carouselRecycler.addItemDecoration(CirclePagerIndicatorDecoration(context))
         PagerSnapHelper().attachToRecyclerView(carouselRecycler)
 
+        infoImage.setOnClickListener { infoListener?.invoke() }
+
         //On carousel scroll do action
         carouselRecycler.addOnScrollListener(CarouselScrollListener())
+    }
+
+    fun setOnInfoClickListener(listener: () -> Unit) {
+        infoListener = listener
     }
 
     /**
@@ -51,6 +58,7 @@ class EventCaorouselWidget : LinearLayoutCompat {
     /**
      * do action on a day selected
      */
+    @Suppress("UNUSED_PARAMETER")
     private fun onDaySelected(deadline: DeadlineModel) {
         // Toast.makeText(context, deadline.desc, Toast.LENGTH_SHORT).show()
     }
@@ -58,6 +66,7 @@ class EventCaorouselWidget : LinearLayoutCompat {
     /**
      * do action on scroll changed
      */
+    @Suppress("UNUSED_PARAMETER")
     private fun onScrollChanged(position: Int) {
         // val deadline = adapter.deadlineOf(position)
         // Toast.makeText(context, "Carousel scroll: ${deadline.date}", Toast.LENGTH_SHORT).show()
