@@ -46,7 +46,7 @@ class EventCaorouselAdapter(var listener: (DeadlineModel) -> Unit) : RecyclerVie
                 DateUtils.formatDayOfYearWithMonthName(dayOfYear)
             }
             itemView.dateText.text = dayOfYearWithMonthName
-            itemView.descriptionText.text = deadline.reminder
+            itemView.descriptionText.text = deadline.desc
             itemView.setOnClickListener { listener.invoke(deadline) }
         }
     }

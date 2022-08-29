@@ -6,11 +6,14 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.links.events.calendar.model.DeadlineModel
 import com.links.events.calendar.repository.MainRepository
+import com.links.events.calendar.tools.DateUtils
 import com.links.events.calendar.tools.SingleEvent
 import com.links.events.calendar.tools.manageProgress
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import java.lang.ref.WeakReference
+import java.util.Collections.addAll
+import java.util.Collections.list
 
 /**
  * Created by Antonio Vitiello
@@ -30,6 +33,14 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                 .manageProgress(weakActivity)
                 .subscribeOn(Schedulers.io())
 //                .observeOn(AndroidSchedulers.mainThread())
+                .map { deadlines ->
+                    deadlines.forEach { deadline ->
+                        DateUtils.parseDayOfYearOrNull(deadline.date)?.let { dayOfYearDate ->
+                            deadline.date = DateUtils.formatDayOfYear(dayOfYearDate)
+                        }
+                    }
+                    deadlines.sortedBy { it.date }
+                }
                 .subscribe({ response ->
                     _deadlinesLiveData.postValue(SingleEvent(response))
                 }, {
@@ -37,4 +48,19 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                 })
         )
     }
+
+    fun nextEventsOf(deadline: DeadlineModel): List<DeadlineModel> {
+        return mutableListOf<DeadlineModel>().apply {
+            _deadlinesLiveData.value?.peekContent()?.let { deadlines ->
+                val indexOfDeadline = deadlines.indexOfFirst { it == deadline }
+                if (indexOfDeadline != -1 && indexOfDeadline < deadlines.size - 1) {
+                    val startIndex = indexOfDeadline + 1
+                    val endIndex = (indexOfDeadline + 3).coerceAtMost(deadlines.size - 1)
+                    val nextEvents = deadlines.subList(startIndex, endIndex + 1)
+                    addAll(nextEvents)
+                }
+            }
+        }
+    }
+
 }

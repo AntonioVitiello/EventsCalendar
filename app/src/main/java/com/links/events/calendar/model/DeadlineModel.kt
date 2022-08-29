@@ -9,7 +9,24 @@ package com.links.events.calendar.model
  * descriptions - text descriptions of events in this deadline
  */
 class DeadlineModel(
-    val date: String,
-    val descriptions: List<String> = listOf(),
-    val reminder: String? = "Deadline reminder!"
-)
+    val id: String,
+    var date: String,
+    val titles: List<String> = listOf(),
+    val desc: String? = "Deadline reminder!"
+) {
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as DeadlineModel
+
+        if (id != other.id) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        return id.hashCode()
+    }
+
+}

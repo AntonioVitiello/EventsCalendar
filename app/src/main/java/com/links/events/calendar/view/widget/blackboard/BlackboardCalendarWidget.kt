@@ -29,11 +29,11 @@ class BlackboardCalendarWidget : FrameLayout {
     }
 
     fun setDeadlines(deadlines: DeadlineModel) {
-        val hasEvents = deadlines.descriptions.isNotEmpty()
+        val hasEvents = deadlines.titles.isNotEmpty()
         fillDate(deadlines.date)
         fillTitle(deadlines.date, hasEvents)
         if (hasEvents) {
-            adapter.switchData(deadlines.descriptions)
+            adapter.switchData(deadlines.titles)
             eventsRecycler.isVisible = true
         } else {
             eventsRecycler.isVisible = false

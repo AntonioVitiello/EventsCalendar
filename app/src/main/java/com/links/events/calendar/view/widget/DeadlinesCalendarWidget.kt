@@ -29,7 +29,6 @@ class DeadlinesCalendarWidget : FrameLayout {
     private var daySelectionListener: ((DeadlineModel) -> Unit)? = null
     private var monthChangeListener: ((String) -> Unit)? = null
 
-
     constructor(context: Context) : this(context, null)
     constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
@@ -76,19 +75,22 @@ class DeadlinesCalendarWidget : FrameLayout {
             }
             // invoke listener for those interested
             daySelectionListener?.let { listener ->
+                // there's an event in this day selected?
                 dayWidget.eventData?.let { deadline ->
                     listener.invoke(deadline)
                 } ?: run {
-                    val date = getDayOfYear(dayWidget)
-                    listener.invoke(DeadlineModel(date))
+                    val dayOfMonth = dayWidget.getDayOfMonth()
+                    val date = getDayOfYear(dayOfMonth)
+                    val deadlineModel = DeadlineModel(dayOfMonth.toString(), date)
+                    listener.invoke(deadlineModel)
                 }
             }
         }
     }
 
-    private fun getDayOfYear(dayWidget: DeadlineDayWidget): String {
+    private fun getDayOfYear(dayOfMonth: Int): String {
         val calendar = currentCalendar.clone() as GregorianCalendar
-        calendar.set(Calendar.DAY_OF_MONTH, dayWidget.getDayOfMonth())
+        calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
         return formatDayOfYear(calendar.time)
     }
 
@@ -195,7 +197,7 @@ class DeadlinesCalendarWidget : FrameLayout {
      *
      * Params: dates - a list of date as String with format: yyyy/MM/dd
      */
-    fun addAllDeadlines(deadlines: List<DeadlineModel>) {
+    fun switchDeadlines(deadlines: List<DeadlineModel>) {
         deadlines.forEach(::addDeadline)
     }
 

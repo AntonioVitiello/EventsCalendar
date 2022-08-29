@@ -97,3 +97,10 @@ fun <T> Single<T>.manageProgress(weakActivity: WeakReference<FragmentActivity>):
     }
 }
 
+fun Int.zeroPad(): String {
+    return if (this < 10) {
+        "0$this"
+    } else {
+        this.toString()
+    }
+}

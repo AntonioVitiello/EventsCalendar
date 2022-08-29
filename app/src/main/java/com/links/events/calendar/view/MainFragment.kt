@@ -47,6 +47,9 @@ class MainFragment : Fragment() {
         // On day selection fill calendar events blackboard
         calendarWidget.setDaySelectionListener { deadline: DeadlineModel ->
             blackboardWidget.setDeadlines(deadline)
+            val nextEvents = viewModel.nextEventsOf(deadline)
+            carouselWidget.switchData(nextEvents)
+            carouselWidget.isVisible = nextEvents.isNotEmpty()
         }
 
         // On month change load new deadlines
@@ -58,11 +61,7 @@ class MainFragment : Fragment() {
 
     private fun fillData(event: SingleEvent<List<DeadlineModel>>) {
         event.getContentIfNotHandled()?.let { deadlines ->
-            calendarWidget.addAllDeadlines(deadlines)
-
-            //TODO:AV 26/08/2022 CLEANME spostare e nascondere anche header con icona
-            carouselWidget.switchData(deadlines)
-            carouselWidget.isVisible = true
+            calendarWidget.switchDeadlines(deadlines)
         }
     }
 
@@ -75,7 +74,7 @@ class MainFragment : Fragment() {
 
     // just for testing
     private fun testAddDeadlines() {
-        calendarWidget.addAllDeadlines(getMonthDeadlines())
+        calendarWidget.switchDeadlines(getMonthDeadlines())
     }
 
 }

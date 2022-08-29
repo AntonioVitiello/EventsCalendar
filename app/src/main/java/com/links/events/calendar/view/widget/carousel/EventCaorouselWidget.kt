@@ -30,8 +30,7 @@ class EventCaorouselWidget : LinearLayoutCompat {
     private fun initView() {
         orientation = VERTICAL
         adapter = EventCaorouselAdapter { deadline: DeadlineModel ->
-            //TODO:AV 26/08/2022 CLEANME
-            Toast.makeText(context, deadline.reminder, Toast.LENGTH_SHORT).show()
+            onDaySelected(deadline)
         }
         carouselRecycler.adapter = adapter
         layoutManager = carouselRecycler.layoutManager as LinearLayoutManager
@@ -43,16 +42,26 @@ class EventCaorouselWidget : LinearLayoutCompat {
     }
 
     /**
+     * Set content deadlines
+     */
+    fun switchData(deadlines: List<DeadlineModel>) {
+        adapter.switchData(deadlines)
+        carouselRecycler.scrollToPosition(0)
+    }
+
+    /**
+     * do action on a day selected
+     */
+    private fun onDaySelected(deadline: DeadlineModel) {
+        // Toast.makeText(context, deadline.desc, Toast.LENGTH_SHORT).show()
+    }
+
+    /**
      * do action on scroll changed
      */
     private fun onScrollChanged(position: Int) {
-        val deadline = adapter.deadlineOf(position)
-        //TODO:AV 26/08/2022
-        Toast.makeText(context, "Carousel scroll: ${deadline.date}", Toast.LENGTH_SHORT).show()
-    }
-
-    fun switchData(deadlines: List<DeadlineModel>) {
-        adapter.switchData(deadlines)
+        // val deadline = adapter.deadlineOf(position)
+        // Toast.makeText(context, "Carousel scroll: ${deadline.date}", Toast.LENGTH_SHORT).show()
     }
 
 
