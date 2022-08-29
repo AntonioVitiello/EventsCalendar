@@ -5,8 +5,7 @@ package com.links.events.calendar.model
  */
 
 /**
- * Params: deadline - date String in the format yyy/MM/dd  eg:"2022/09/25"
- * descriptions - text descriptions of events in this deadline
+ * Params: date - date String in the format yyy/MM/dd  eg:"2022/09/25"
  */
 class DeadlineModel(
     val id: String,

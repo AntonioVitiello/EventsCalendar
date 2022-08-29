@@ -14,7 +14,7 @@
         tools:text="12" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/descriptionText"
+        android:id="@+id/titleText"
         style="@style/white_medium_16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

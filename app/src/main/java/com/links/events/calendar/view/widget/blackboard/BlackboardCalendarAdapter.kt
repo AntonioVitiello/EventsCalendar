@@ -9,7 +9,7 @@ import com.links.events.calendar.R
 import kotlinx.android.synthetic.main.item_blackboard_calendar.view.*
 
 class BlackboardCalendarAdapter : RecyclerView.Adapter<BlackboardCalendarAdapter.ViewHolder>() {
-    private val descriptions = mutableListOf<String>()
+    private val eventTitles = mutableListOf<String>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_blackboard_calendar, parent, false)
@@ -17,26 +17,30 @@ class BlackboardCalendarAdapter : RecyclerView.Adapter<BlackboardCalendarAdapter
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val description = descriptions[position]
-        holder.bind(description, position)
+        val eventTitle = eventTitles[position]
+        holder.bind(eventTitle, position)
     }
 
-    override fun getItemCount() = descriptions.size
+    override fun getItemCount() = eventTitles.size
 
     @SuppressLint("NotifyDataSetChanged")
     fun switchData(data: List<String>?) {
-        descriptions.clear()
+        eventTitles.clear()
         if (data != null) {
-            descriptions.addAll(data)
+            eventTitles.addAll(data)
         }
         notifyDataSetChanged()
     }
 
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(description: String, position: Int) {
-            itemView.descriptionText.text = description
-            val counter = "${position + 1}"
+        fun bind(eventTitle: String, position: Int) {
+            itemView.titleText.text = eventTitle
+            val counter = if (eventTitles.size > 1) {
+                "${position + 1}"
+            } else {
+                ""
+            }
             itemView.counterText.text = counter
         }
     }

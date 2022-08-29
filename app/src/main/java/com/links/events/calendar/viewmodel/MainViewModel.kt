@@ -5,15 +5,13 @@ import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.links.events.calendar.model.DeadlineModel
+import com.links.events.calendar.network.mapping.mapDeadlineResponse
 import com.links.events.calendar.repository.MainRepository
-import com.links.events.calendar.tools.DateUtils
 import com.links.events.calendar.tools.SingleEvent
 import com.links.events.calendar.tools.manageProgress
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import java.lang.ref.WeakReference
-import java.util.Collections.addAll
-import java.util.Collections.list
 
 /**
  * Created by Antonio Vitiello
@@ -32,17 +30,10 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             repository.loadDeadLinesByDate(data)
                 .manageProgress(weakActivity)
                 .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-                .map { deadlines ->
-                    deadlines.forEach { deadline ->
-                        DateUtils.parseDayOfYearOrNull(deadline.date)?.let { dayOfYearDate ->
-                            deadline.date = DateUtils.formatDayOfYear(dayOfYearDate)
-                        }
-                    }
-                    deadlines.sortedBy { it.date }
-                }
-                .subscribe({ response ->
-                    _deadlinesLiveData.postValue(SingleEvent(response))
+                // .observeOn(AndroidSchedulers.mainThread())
+                .map(::mapDeadlineResponse)
+                .subscribe({ deadlineModels ->
+                    _deadlinesLiveData.postValue(SingleEvent(deadlineModels))
                 }, {
                     _errorLiveData.postValue(SingleEvent(true))
                 })

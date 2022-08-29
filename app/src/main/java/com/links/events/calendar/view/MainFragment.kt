@@ -8,8 +8,6 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.links.events.calendar.R
-import com.links.events.calendar.data.source.getDeadlineByDate
-import com.links.events.calendar.data.source.getMonthDeadlines
 import com.links.events.calendar.model.DeadlineModel
 import com.links.events.calendar.tools.DateUtils
 import com.links.events.calendar.tools.SingleEvent
@@ -63,18 +61,6 @@ class MainFragment : Fragment() {
         event.getContentIfNotHandled()?.let { deadlines ->
             calendarWidget.switchDeadlines(deadlines)
         }
-    }
-
-    // just for testing
-    private fun testAddDeadline() {
-        calendarWidget.addDeadline(getDeadlineByDate("2022/07/20")) // ignored becouse not in this month
-        calendarWidget.addDeadline(getDeadlineByDate("2022/08/20"))
-        calendarWidget.addDeadline(getDeadlineByDate("2022/09/20")) // ignored becouse not in this month
-    }
-
-    // just for testing
-    private fun testAddDeadlines() {
-        calendarWidget.switchDeadlines(getMonthDeadlines())
     }
 
 }

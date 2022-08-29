@@ -1,6 +1,7 @@
 package com.links.events.calendar.data.source
 
-import com.links.events.calendar.model.DeadlineModel
+import com.links.events.calendar.network.dto.Deadline
+import com.links.events.calendar.network.dto.DeadlineResponse
 import com.links.events.calendar.tools.zeroPad
 
 /**
@@ -22,40 +23,48 @@ private val reminders = listOf(
     "Ut condimentum vel eros vitae placerat."
 )
 
-fun getDeadlinesByDate(data: String): List<DeadlineModel> {
+fun getDeadlinesByDate(data: String): DeadlineResponse {
     val split = data.split("/")
     val year = split[0]
     val month = split[1]
-    return listOf(
-        DeadlineModel(
-            id = "123",
-            date = "$year/$month/${randomDay()}",
-            titles = listOf(descriptions.random(), descriptions.random(), descriptions.random()),
-            desc = reminders.random()
-        ),
-        DeadlineModel(
-            id = "124",
-            date = "$year/$month/${randomDay()}",
-            titles = listOf(descriptions.random(), descriptions.random(), descriptions.random()),
-            desc = reminders.random()
-        ),
-        DeadlineModel(
-            id = "125",
-            date = "$year/$month/${randomDay()}",
-            titles = listOf(descriptions.random(), descriptions.random(), descriptions.random()),
-            desc = reminders.random()
-        ),
-        DeadlineModel(
-            id = "126",
-            date = "$year/$month/${randomDay()}",
-            titles = listOf(descriptions.random(), descriptions.random(), descriptions.random()),
-            desc = reminders.random()
-        ),
-        DeadlineModel(
-            id = "127",
-            date = "$year/$month/${randomDay()}",
-            titles = listOf(descriptions.random(), descriptions.random(), descriptions.random()),
-            desc = reminders.random()
+    return DeadlineResponse(
+        listOf(
+            Deadline(
+                id = "123",
+                date = "$year/$month/${randomDay()}",
+                titles = listOf(descriptions.random(), descriptions.random(), descriptions.random()),
+                desc = reminders.random()
+            ),
+            Deadline(
+                id = "124",
+                date = "$year/$month/${randomDay()}",
+                titles = listOf(descriptions.random(), descriptions.random(), descriptions.random()),
+                desc = reminders.random()
+            ),
+            Deadline(
+                id = "125",
+                date = "$year/$month/${randomDay()}",
+                titles = listOf(descriptions.random(), descriptions.random(), descriptions.random()),
+                desc = reminders.random()
+            ),
+            Deadline(
+                id = "126",
+                date = "$year/$month/${randomDay()}",
+                titles = listOf(descriptions.random(), descriptions.random(), descriptions.random()),
+                desc = reminders.random()
+            ),
+            Deadline(
+                id = "127",
+                date = "$year/$month/${randomDay()}",
+                titles = listOf(descriptions.random()),
+                desc = reminders.random()
+            ),
+            Deadline(
+                id = "128",
+                date = "$year/$month/${randomDay()}",
+                titles = listOf(descriptions.random(), descriptions.random(), descriptions.random()),
+                desc = reminders.random()
+            )
         )
     )
 }
@@ -63,48 +72,4 @@ fun getDeadlinesByDate(data: String): List<DeadlineModel> {
 // return a random day in 1..31
 fun randomDay(): String {
     return (1..31).random().zeroPad()
-}
-
-fun getDeadlineByDate(date: String): DeadlineModel {
-    return DeadlineModel(
-        id = "1234",
-        date = date,
-        titles = listOf(descriptions.random(), descriptions.random(), descriptions.random()),
-        desc = reminders.random()
-    )
-}
-
-fun getMonthDeadlines(): List<DeadlineModel> {
-    return listOf(
-        DeadlineModel(
-            id = "1000",
-            date = "2022/08/07",
-            titles = listOf(descriptions.random(), descriptions.random(), descriptions.random()),
-            desc = reminders.random()
-        ),
-        DeadlineModel(
-            id = "1001",
-            date = "2022/08/08",
-            titles = listOf(descriptions.random(), descriptions.random(), descriptions.random()),
-            desc = reminders.random()
-        ),
-        DeadlineModel(
-            id = "1002",
-            date = "2022/08/16",
-            titles = listOf(descriptions.random(), descriptions.random(), descriptions.random()),
-            desc = reminders.random()
-        ),
-        DeadlineModel(
-            id = "1003",
-            date = "2022/08/26",
-            titles = listOf(descriptions.random(), descriptions.random(), descriptions.random()),
-            desc = reminders.random()
-        ),
-        DeadlineModel(
-            id = "1004",
-            date = "2022/08/28",
-            titles = listOf(descriptions.random(), descriptions.random(), descriptions.random()),
-            desc = reminders.random()
-        )
-    )
 }

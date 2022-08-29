@@ -3,7 +3,6 @@ package com.links.events.calendar.view.widget.carousel
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
@@ -13,7 +12,7 @@ import com.links.events.calendar.model.DeadlineModel
 import kotlinx.android.synthetic.main.widget_event_carousel.view.*
 
 /**
- * Created by Antonio Vitiello on 26/08/2022.
+ * Created by Antonio Vitiello
  */
 class EventCaorouselWidget : LinearLayoutCompat {
     private lateinit var adapter: EventCaorouselAdapter

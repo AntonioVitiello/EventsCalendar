@@ -58,7 +58,7 @@ class DateUtils {
         }
 
         //"yyyy/MM/dd" eg: 2022/08/24
-        fun parseDayOfYearOrNull(dayOfYear: String): Date? {
+        fun parseDayOfYearOrNull(dayOfYear: String?): Date? {
             return parseDateOrNull(dayOfYearFormat, dayOfYear)
         }
 
