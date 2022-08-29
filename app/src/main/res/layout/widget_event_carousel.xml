@@ -5,9 +5,9 @@
     android:id="@+id/carouselRecycler"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/shape_round_border_6"
     android:clipToPadding="false"
     android:orientation="horizontal"
+    android:paddingBottom="10dp"
     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
     tools:itemCount="1"
     tools:listitem="@layout/item_event_carousel" />
