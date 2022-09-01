@@ -1,13 +1,15 @@
-package com.links.events.calendar.view.widget
+package com.links.events.calendar.view.widget.calendar
 
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
+import android.view.ViewParent
 import android.widget.FrameLayout
 import androidx.core.content.ContextCompat
 import androidx.core.widget.TextViewCompat
 import com.links.events.calendar.R
 import com.links.events.calendar.model.DeadlineModel
+import com.links.events.calendar.tools.SafeClickListener
 import kotlinx.android.synthetic.main.widget_day_event_calendar.view.*
 
 /**
@@ -32,8 +34,10 @@ class DeadlineDayWidget : FrameLayout {
         initView()
     }
 
-    //TODO:AV 23/08/2022 CLEANME
     private fun initView() {
+        setOnClickListener(SafeClickListener {
+            dayClickListenerOrNull()?.onNewSelection(this)
+        })
         if (isInEditMode) {
             dayInMonth = true
             today = true
@@ -93,6 +97,12 @@ class DeadlineDayWidget : FrameLayout {
                     }
                 }
             )
+        }
+
+    var eventData: DeadlineModel?
+        get() = _eventData
+        set(value) {
+            _eventData = value
         }
 
     private fun resetState() {
@@ -158,10 +168,14 @@ class DeadlineDayWidget : FrameLayout {
         circleImage.setImageDrawable(drawable)
     }
 
-    var eventData: DeadlineModel?
-        get() = _eventData
-        set(value) {
-            _eventData = value
+    private fun dayClickListenerOrNull(viewParent: ViewParent? = parent): IDayClick? {
+        return viewParent?.let { p ->
+            if (p is IDayClick) {
+                p
+            } else {
+                dayClickListenerOrNull(p.parent)
+            }
         }
+    }
 
 }

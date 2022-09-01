@@ -5,6 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/shape_round_border_6"
+    android:clickable="false"
+    android:focusable="false"
     android:paddingHorizontal="18dp"
     android:paddingBottom="21dp">
 
@@ -124,7 +126,7 @@
         app:layout_constraintTop_toTopOf="@id/mondayText" />
 
     <!-- ROW 1 -->
-    <com.links.events.calendar.view.widget.DeadlineDayWidget
+    <com.links.events.calendar.view.widget.calendar.DeadlineDayWidget
         android:id="@+id/day11Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -134,7 +136,7 @@
         app:layout_constraintTop_toBottomOf="@id/mondayText"
         tools:text="1" />
 
-    <com.links.events.calendar.view.widget.DeadlineDayWidget
+    <com.links.events.calendar.view.widget.calendar.DeadlineDayWidget
         android:id="@+id/day12Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -144,7 +146,7 @@
         app:layout_constraintStart_toStartOf="@id/tuesdayText"
         tools:text="2" />
 
-    <com.links.events.calendar.view.widget.DeadlineDayWidget
+    <com.links.events.calendar.view.widget.calendar.DeadlineDayWidget
         android:id="@+id/day13Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -153,7 +155,7 @@
         app:layout_constraintStart_toStartOf="@id/wednesdayText"
         tools:text="3" />
 
-    <com.links.events.calendar.view.widget.DeadlineDayWidget
+    <com.links.events.calendar.view.widget.calendar.DeadlineDayWidget
         android:id="@+id/day14Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -162,7 +164,7 @@
         app:layout_constraintStart_toStartOf="@id/thursdayText"
         tools:text="4" />
 
-    <com.links.events.calendar.view.widget.DeadlineDayWidget
+    <com.links.events.calendar.view.widget.calendar.DeadlineDayWidget
         android:id="@+id/day15Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -171,7 +173,7 @@
         app:layout_constraintStart_toStartOf="@id/fridayText"
         tools:text="5" />
 
-    <com.links.events.calendar.view.widget.DeadlineDayWidget
+    <com.links.events.calendar.view.widget.calendar.DeadlineDayWidget
         android:id="@+id/day16Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -180,7 +182,7 @@
         app:layout_constraintStart_toStartOf="@id/saturdayText"
         tools:text="6" />
 
-    <com.links.events.calendar.view.widget.DeadlineDayWidget
+    <com.links.events.calendar.view.widget.calendar.DeadlineDayWidget
         android:id="@+id/day17Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -190,7 +192,7 @@
         tools:text="7" />
 
     <!-- ROW 2 -->
-    <com.links.events.calendar.view.widget.DeadlineDayWidget
+    <com.links.events.calendar.view.widget.calendar.DeadlineDayWidget
         android:id="@+id/day21Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -200,7 +202,7 @@
         app:layout_constraintTop_toBottomOf="@id/day11Widget"
         tools:text="21" />
 
-    <com.links.events.calendar.view.widget.DeadlineDayWidget
+    <com.links.events.calendar.view.widget.calendar.DeadlineDayWidget
         android:id="@+id/day22Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -210,7 +212,7 @@
         app:layout_constraintStart_toStartOf="@id/tuesdayText"
         tools:text="22" />
 
-    <com.links.events.calendar.view.widget.DeadlineDayWidget
+    <com.links.events.calendar.view.widget.calendar.DeadlineDayWidget
         android:id="@+id/day23Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -219,7 +221,7 @@
         app:layout_constraintStart_toStartOf="@id/wednesdayText"
         tools:text="23" />
 
-    <com.links.events.calendar.view.widget.DeadlineDayWidget
+    <com.links.events.calendar.view.widget.calendar.DeadlineDayWidget
         android:id="@+id/day24Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -228,7 +230,7 @@
         app:layout_constraintStart_toStartOf="@id/thursdayText"
         tools:text="24" />
 
-    <com.links.events.calendar.view.widget.DeadlineDayWidget
+    <com.links.events.calendar.view.widget.calendar.DeadlineDayWidget
         android:id="@+id/day25Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -237,7 +239,7 @@
         app:layout_constraintStart_toStartOf="@id/fridayText"
         tools:text="25" />
 
-    <com.links.events.calendar.view.widget.DeadlineDayWidget
+    <com.links.events.calendar.view.widget.calendar.DeadlineDayWidget
         android:id="@+id/day26Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -246,7 +248,7 @@
         app:layout_constraintStart_toStartOf="@id/saturdayText"
         tools:text="26" />
 
-    <com.links.events.calendar.view.widget.DeadlineDayWidget
+    <com.links.events.calendar.view.widget.calendar.DeadlineDayWidget
         android:id="@+id/day27Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -256,7 +258,7 @@
         tools:text="27" />
 
     <!-- ROW 3 -->
-    <com.links.events.calendar.view.widget.DeadlineDayWidget
+    <com.links.events.calendar.view.widget.calendar.DeadlineDayWidget
         android:id="@+id/day31Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -266,7 +268,7 @@
         app:layout_constraintTop_toBottomOf="@id/day21Widget"
         tools:text="31" />
 
-    <com.links.events.calendar.view.widget.DeadlineDayWidget
+    <com.links.events.calendar.view.widget.calendar.DeadlineDayWidget
         android:id="@+id/day32Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -276,7 +278,7 @@
         app:layout_constraintStart_toStartOf="@id/tuesdayText"
         tools:text="32" />
 
-    <com.links.events.calendar.view.widget.DeadlineDayWidget
+    <com.links.events.calendar.view.widget.calendar.DeadlineDayWidget
         android:id="@+id/day33Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -285,7 +287,7 @@
         app:layout_constraintStart_toStartOf="@id/wednesdayText"
         tools:text="33" />
 
-    <com.links.events.calendar.view.widget.DeadlineDayWidget
+    <com.links.events.calendar.view.widget.calendar.DeadlineDayWidget
         android:id="@+id/day34Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -294,7 +296,7 @@
         app:layout_constraintStart_toStartOf="@id/thursdayText"
         tools:text="34" />
 
-    <com.links.events.calendar.view.widget.DeadlineDayWidget
+    <com.links.events.calendar.view.widget.calendar.DeadlineDayWidget
         android:id="@+id/day35Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -303,7 +305,7 @@
         app:layout_constraintStart_toStartOf="@id/fridayText"
         tools:text="35" />
 
-    <com.links.events.calendar.view.widget.DeadlineDayWidget
+    <com.links.events.calendar.view.widget.calendar.DeadlineDayWidget
         android:id="@+id/day36Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -312,7 +314,7 @@
         app:layout_constraintStart_toStartOf="@id/saturdayText"
         tools:text="36" />
 
-    <com.links.events.calendar.view.widget.DeadlineDayWidget
+    <com.links.events.calendar.view.widget.calendar.DeadlineDayWidget
         android:id="@+id/day37Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -322,7 +324,7 @@
         tools:text="37" />
 
     <!-- ROW 4 -->
-    <com.links.events.calendar.view.widget.DeadlineDayWidget
+    <com.links.events.calendar.view.widget.calendar.DeadlineDayWidget
         android:id="@+id/day41Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -332,7 +334,7 @@
         app:layout_constraintTop_toBottomOf="@id/day31Widget"
         tools:text="41" />
 
-    <com.links.events.calendar.view.widget.DeadlineDayWidget
+    <com.links.events.calendar.view.widget.calendar.DeadlineDayWidget
         android:id="@+id/day42Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -342,7 +344,7 @@
         app:layout_constraintStart_toStartOf="@id/tuesdayText"
         tools:text="42" />
 
-    <com.links.events.calendar.view.widget.DeadlineDayWidget
+    <com.links.events.calendar.view.widget.calendar.DeadlineDayWidget
         android:id="@+id/day43Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -351,7 +353,7 @@
         app:layout_constraintStart_toStartOf="@id/wednesdayText"
         tools:text="43" />
 
-    <com.links.events.calendar.view.widget.DeadlineDayWidget
+    <com.links.events.calendar.view.widget.calendar.DeadlineDayWidget
         android:id="@+id/day44Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -360,7 +362,7 @@
         app:layout_constraintStart_toStartOf="@id/thursdayText"
         tools:text="44" />
 
-    <com.links.events.calendar.view.widget.DeadlineDayWidget
+    <com.links.events.calendar.view.widget.calendar.DeadlineDayWidget
         android:id="@+id/day45Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -369,7 +371,7 @@
         app:layout_constraintStart_toStartOf="@id/fridayText"
         tools:text="45" />
 
-    <com.links.events.calendar.view.widget.DeadlineDayWidget
+    <com.links.events.calendar.view.widget.calendar.DeadlineDayWidget
         android:id="@+id/day46Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -378,7 +380,7 @@
         app:layout_constraintStart_toStartOf="@id/saturdayText"
         tools:text="46" />
 
-    <com.links.events.calendar.view.widget.DeadlineDayWidget
+    <com.links.events.calendar.view.widget.calendar.DeadlineDayWidget
         android:id="@+id/day47Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -388,7 +390,7 @@
         tools:text="47" />
 
     <!-- ROW 5 -->
-    <com.links.events.calendar.view.widget.DeadlineDayWidget
+    <com.links.events.calendar.view.widget.calendar.DeadlineDayWidget
         android:id="@+id/day51Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -398,7 +400,7 @@
         app:layout_constraintTop_toBottomOf="@id/day41Widget"
         tools:text="51" />
 
-    <com.links.events.calendar.view.widget.DeadlineDayWidget
+    <com.links.events.calendar.view.widget.calendar.DeadlineDayWidget
         android:id="@+id/day52Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -408,7 +410,7 @@
         app:layout_constraintStart_toStartOf="@id/tuesdayText"
         tools:text="52" />
 
-    <com.links.events.calendar.view.widget.DeadlineDayWidget
+    <com.links.events.calendar.view.widget.calendar.DeadlineDayWidget
         android:id="@+id/day53Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -417,7 +419,7 @@
         app:layout_constraintStart_toStartOf="@id/wednesdayText"
         tools:text="53" />
 
-    <com.links.events.calendar.view.widget.DeadlineDayWidget
+    <com.links.events.calendar.view.widget.calendar.DeadlineDayWidget
         android:id="@+id/day54Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -426,7 +428,7 @@
         app:layout_constraintStart_toStartOf="@id/thursdayText"
         tools:text="54" />
 
-    <com.links.events.calendar.view.widget.DeadlineDayWidget
+    <com.links.events.calendar.view.widget.calendar.DeadlineDayWidget
         android:id="@+id/day55Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -435,7 +437,7 @@
         app:layout_constraintStart_toStartOf="@id/fridayText"
         tools:text="55" />
 
-    <com.links.events.calendar.view.widget.DeadlineDayWidget
+    <com.links.events.calendar.view.widget.calendar.DeadlineDayWidget
         android:id="@+id/day56Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -444,7 +446,7 @@
         app:layout_constraintStart_toStartOf="@id/saturdayText"
         tools:text="56" />
 
-    <com.links.events.calendar.view.widget.DeadlineDayWidget
+    <com.links.events.calendar.view.widget.calendar.DeadlineDayWidget
         android:id="@+id/day57Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -454,7 +456,7 @@
         tools:text="57" />
 
     <!-- ROW 6 -->
-    <com.links.events.calendar.view.widget.DeadlineDayWidget
+    <com.links.events.calendar.view.widget.calendar.DeadlineDayWidget
         android:id="@+id/day61Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -464,7 +466,7 @@
         app:layout_constraintTop_toBottomOf="@id/day51Widget"
         tools:text="61" />
 
-    <com.links.events.calendar.view.widget.DeadlineDayWidget
+    <com.links.events.calendar.view.widget.calendar.DeadlineDayWidget
         android:id="@+id/day62Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -474,7 +476,7 @@
         app:layout_constraintStart_toStartOf="@id/tuesdayText"
         tools:text="62" />
 
-    <com.links.events.calendar.view.widget.DeadlineDayWidget
+    <com.links.events.calendar.view.widget.calendar.DeadlineDayWidget
         android:id="@+id/day63Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -483,7 +485,7 @@
         app:layout_constraintStart_toStartOf="@id/wednesdayText"
         tools:text="63" />
 
-    <com.links.events.calendar.view.widget.DeadlineDayWidget
+    <com.links.events.calendar.view.widget.calendar.DeadlineDayWidget
         android:id="@+id/day64Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -492,7 +494,7 @@
         app:layout_constraintStart_toStartOf="@id/thursdayText"
         tools:text="64" />
 
-    <com.links.events.calendar.view.widget.DeadlineDayWidget
+    <com.links.events.calendar.view.widget.calendar.DeadlineDayWidget
         android:id="@+id/day65Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -501,7 +503,7 @@
         app:layout_constraintStart_toStartOf="@id/fridayText"
         tools:text="65" />
 
-    <com.links.events.calendar.view.widget.DeadlineDayWidget
+    <com.links.events.calendar.view.widget.calendar.DeadlineDayWidget
         android:id="@+id/day66Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -510,7 +512,7 @@
         app:layout_constraintStart_toStartOf="@id/saturdayText"
         tools:text="66" />
 
-    <com.links.events.calendar.view.widget.DeadlineDayWidget
+    <com.links.events.calendar.view.widget.calendar.DeadlineDayWidget
         android:id="@+id/day67Widget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

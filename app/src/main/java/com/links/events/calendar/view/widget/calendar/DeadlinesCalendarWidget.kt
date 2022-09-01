@@ -1,4 +1,4 @@
-package com.links.events.calendar.view.widget
+package com.links.events.calendar.view.widget.calendar
 
 import android.content.Context
 import android.util.AttributeSet
@@ -12,15 +12,14 @@ import com.links.events.calendar.tools.DateUtils.Companion.formatDayOfYear
 import com.links.events.calendar.tools.DateUtils.Companion.formatMonthYear
 import com.links.events.calendar.tools.DateUtils.Companion.parseDayOfYearOrNull
 import com.links.events.calendar.tools.DateUtils.Companion.todayCalendar
-import com.links.events.calendar.tools.SafeClickListener
-import com.links.events.calendar.view.widget.DeadlineDayWidget.DateType.WITHOUT_EVENT
+import com.links.events.calendar.view.widget.calendar.DeadlineDayWidget.DateType.WITHOUT_EVENT
 import kotlinx.android.synthetic.main.widget_event_calendar.view.*
 import java.util.*
 
 /**
  * Created by Antonio Vitiello
  */
-class DeadlinesCalendarWidget : FrameLayout {
+class DeadlinesCalendarWidget : FrameLayout, IDayClick {
     private val todayCalendar = todayCalendar() //do not change date, clone instead!
     private var currentCalendar = todayCalendar.clone() as GregorianCalendar
     private lateinit var dayWidgets: List<DeadlineDayWidget>
@@ -60,12 +59,9 @@ class DeadlinesCalendarWidget : FrameLayout {
 
         leftArrowImage.setOnClickListener { prevMonth() }
         rightArrowImage.setOnClickListener { nextMonth() }
-        dayWidgets.forEach { dayWidget ->
-            dayWidget.setOnClickListener(SafeClickListener { onNewSelection(dayWidget) })
-        }
     }
 
-    private fun onNewSelection(dayWidget: DeadlineDayWidget) {
+    override fun onNewSelection(dayWidget: DeadlineDayWidget) {
         if (dayWidget.dayInMonth) {
             // execute selection and store new selection state
             dayWidget.daySelected = true
