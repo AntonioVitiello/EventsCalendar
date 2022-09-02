@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.links.events.calendar.R
 import kotlinx.android.synthetic.main.item_blackboard_calendar.view.*
@@ -36,12 +37,13 @@ class BlackboardCalendarAdapter : RecyclerView.Adapter<BlackboardCalendarAdapter
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(eventTitle: String, position: Int) {
             itemView.titleText.text = eventTitle
-            val counter = if (eventTitles.size > 1) {
-                "${position + 1}"
+            if (eventTitles.size > 1) {
+                val counter = "${position + 1}"
+                itemView.counterText.text = counter
+                itemView.counterText.isVisible = true
             } else {
-                ""
+                itemView.counterText.isVisible = false
             }
-            itemView.counterText.text = counter
         }
     }
 
