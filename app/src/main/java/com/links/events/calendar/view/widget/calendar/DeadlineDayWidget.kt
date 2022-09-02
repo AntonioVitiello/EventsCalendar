@@ -35,7 +35,7 @@ class DeadlineDayWidget : FrameLayout {
     }
 
     private fun initView() {
-        setOnClickListener(SafeClickListener {
+        dateText.setOnClickListener(SafeClickListener {
             dayClickListenerOrNull()?.onNewSelection(this)
         })
         if (isInEditMode) {
