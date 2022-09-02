@@ -137,6 +137,7 @@ class DeadlinesCalendarWidget : FrameLayout, IDayClick {
             }
         }
 
+        // Sundays have gray color
         for (i in 6 until dayWidgets.size step 7) {
             dayWidgets[i].sunday = true
         }
