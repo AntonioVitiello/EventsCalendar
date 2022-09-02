@@ -17,6 +17,7 @@ import kotlinx.android.synthetic.main.widget_day_event_calendar.view.*
  */
 class DeadlineDayWidget : FrameLayout {
     private var _today = false
+    private var _sunday = false
     private var _dayWithEvent = false
     private var _daySelected = false
     private var _eventData: DeadlineModel? = null
@@ -54,6 +55,16 @@ class DeadlineDayWidget : FrameLayout {
                 val color = ContextCompat.getColor(context, R.color.red_light)
                 dateText.setTextColor(color)
                 daySelected = true
+            }
+        }
+
+    var sunday: Boolean
+        get() = _sunday
+        set(value) {
+            _sunday = value
+            if (value) {
+                val color = ContextCompat.getColor(context, R.color.gray)
+                dateText.setTextColor(color)
             }
         }
 

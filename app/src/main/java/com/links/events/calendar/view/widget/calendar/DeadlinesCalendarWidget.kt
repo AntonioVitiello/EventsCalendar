@@ -112,6 +112,7 @@ class DeadlinesCalendarWidget : FrameLayout, IDayClick {
         endIndex = lastDayInMonth + firstDayOfMonthOffset
         for (i in startIndex until endIndex) {
             dayWidgets[i].setDate(day.toString(), WITHOUT_EVENT, true)
+            // for Sunday text color is gray
             day++
         }
 
@@ -134,6 +135,10 @@ class DeadlinesCalendarWidget : FrameLayout, IDayClick {
                 dayWidget.today = true
                 dayWidgetSelected = dayWidget
             }
+        }
+
+        for (i in 6 until dayWidgets.size step 7) {
+            dayWidgets[i].sunday = true
         }
     }
 
